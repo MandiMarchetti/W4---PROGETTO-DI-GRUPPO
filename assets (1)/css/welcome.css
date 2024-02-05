@@ -66,14 +66,22 @@ body div img{
 }
 
 /* checkbox content*/
-.checkbox p{
-    display: inline;
-    color:white;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
+
+.checkbox{
+    margin: 0;
+    padding-top: 60px;
 }
 
-.checkbox button{
+.checkbox p{
+    display: inline-block;
+    color:white;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+}
+
+
+/* button*/
+ button{
     width: 180px;
     height: 50px;
     background-color: #00ffff;
@@ -82,5 +90,9 @@ body div img{
     font-size: 20px;
     font-weight:700;
     color: #0b1840;
+    margin-left: 6em
+}
 
+.block{
+    display: block;
 }
