@@ -1,0 +1,17 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+}
+
+.background {
+  background-image: url("../bg.jpg");
+  background-size: cover;
+}
+
+.logo {
+  width: 10em;
+  height: auto;
+}
