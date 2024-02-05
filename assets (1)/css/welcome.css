@@ -92,7 +92,14 @@ body div img{
     font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-weight:700;
-    color: #0b1840;
     margin-left: 7em;
+}
+button a{
+    text-decoration: none;
+    color: #0b1840;
+}
+
+.button-shining{
+    box-shadow:8px 8px 8px #00ffff; 
 }
 
