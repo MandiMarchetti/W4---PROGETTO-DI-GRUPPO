@@ -113,6 +113,7 @@ const visualizzaDomanda = (iQuest) => {
       inputIncorrect.type = "radio";
       inputIncorrect.name = `risposta_${iQuest}`;
       inputIncorrect.value = "sbagliata";
+      inputIncorrect.onclick = cambiaDomanda;
       labelIncorrect.appendChild(inputIncorrect);
       labelIncorrect.appendChild(document.createTextNode(risposta));
       risposte.appendChild(labelIncorrect);
@@ -123,6 +124,7 @@ const visualizzaDomanda = (iQuest) => {
     inputCorrect.type = "radio";
     inputCorrect.name = `risposta_${iQuest}`;
     inputCorrect.value = "Giusta!";
+    inputCorrect.onclick = cambiaDomanda;
     labelCorrect.appendChild(inputCorrect);
     labelCorrect.appendChild(document.createTextNode(domandaCorrente.correct_answer));
     risposte.appendChild(labelCorrect);
