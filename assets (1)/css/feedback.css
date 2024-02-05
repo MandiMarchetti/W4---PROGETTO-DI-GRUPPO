@@ -19,6 +19,10 @@ header img {
   height: 100%;
 }
 
+main {
+  margin: 0 20%;
+}
+
 h1 {
   font-size: 3rem;
 }
@@ -29,6 +33,7 @@ h2 {
 
 #stars {
   height: 3rem;
+  margin: 3rem;
 }
 
 p {
@@ -38,5 +43,18 @@ p {
 input {
   background-color: transparent;
   border: 0;
-  margin-bottom: 2rem;
+  align-items: start;
+  width: 90%;
+  height: 1.5rem;
+}
+
+section {
+  border-bottom: 5px solid;
+  border-color: #c2138d;
+  box-sizing: content-box;
+  margin-top: 4rem;
+}
+
+button {
+  margin: 4rem 0;
 }
