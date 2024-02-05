@@ -110,10 +110,12 @@ const visualizzaDomanda = (iQuest) => {
 
       const labelIncorrect = document.createElement("label");
       const inputIncorrect = document.createElement("input");
+      // definisco gli input che devono avere le risposte
       inputIncorrect.type = "radio";
       inputIncorrect.name = `risposta_${iQuest}`;
       inputIncorrect.value = "sbagliata";
       inputIncorrect.onclick = cambiaDomanda;
+      //inserisco gli elementi nell'HTML
       labelIncorrect.appendChild(inputIncorrect);
       labelIncorrect.appendChild(document.createTextNode(risposta));
       risposte.appendChild(labelIncorrect);
@@ -128,6 +130,26 @@ const visualizzaDomanda = (iQuest) => {
     labelCorrect.appendChild(inputCorrect);
     labelCorrect.appendChild(document.createTextNode(domandaCorrente.correct_answer));
     risposte.appendChild(labelCorrect);
+  } else if (domandaCorrente.type === "boolean") {
+    const labelTrue = document.createElement("label");
+    const inputTrue = document.createElement("input");
+    inputTrue.type = "radio";
+    inputTrue.name = `risposta_${iQuest}`;
+    inputTrue.value = "Giusta!";
+    inputTrue.onclick = cambiaDomanda;
+    labelTrue.appendChild(inputTrue);
+    labelTrue.appendChild(document.createTextNode(domandaCorrente.correct_answer));
+    risposte.appendChild(labelTrue);
+
+    const labelFalse = document.createElement("label");
+    const inputFalse = document.createElement("input");
+    inputFalse.type = "radio";
+    inputFalse.name = `risposta_${iQuest}`;
+    inputFalse.value = "Giusta!";
+    inputFalse.onclick = cambiaDomanda;
+    labelFalse.appendChild(inputFalse);
+    labelFalse.appendChild(document.createTextNode(domandaCorrente.incorrect_answers));
+    risposte.appendChild(labelFalse);
   }
 };
 
