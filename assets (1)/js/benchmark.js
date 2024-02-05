@@ -112,7 +112,6 @@ const visualizzaDomanda = (iQuest) => {
       const inputIncorrect = document.createElement("input");
       // definisco gli input che devono avere le risposte
       inputIncorrect.type = "radio";
-      inputIncorrect.name = `risposta_${iQuest}`;
       inputIncorrect.value = "sbagliata";
       inputIncorrect.onclick = cambiaDomanda;
       //inserisco gli elementi nell'HTML
@@ -124,7 +123,6 @@ const visualizzaDomanda = (iQuest) => {
     const labelCorrect = document.createElement("label");
     const inputCorrect = document.createElement("input");
     inputCorrect.type = "radio";
-    inputCorrect.name = `risposta_${iQuest}`;
     inputCorrect.value = "Giusta!";
     inputCorrect.onclick = cambiaDomanda;
     labelCorrect.appendChild(inputCorrect);
@@ -134,23 +132,23 @@ const visualizzaDomanda = (iQuest) => {
     const labelTrue = document.createElement("label");
     const inputTrue = document.createElement("input");
     inputTrue.type = "radio";
-    inputTrue.name = `risposta_${iQuest}`;
-    inputTrue.value = "Giusta!";
+    inputTrue.value = "Vera!";
     inputTrue.onclick = cambiaDomanda;
     labelTrue.appendChild(inputTrue);
-    labelTrue.appendChild(document.createTextNode(domandaCorrente.correct_answer));
+    labelTrue.appendChild(document.createTextNode("True"));
     risposte.appendChild(labelTrue);
 
     const labelFalse = document.createElement("label");
     const inputFalse = document.createElement("input");
     inputFalse.type = "radio";
-    inputFalse.name = `risposta_${iQuest}`;
-    inputFalse.value = "Giusta!";
+    inputFalse.value = "Falsa!";
     inputFalse.onclick = cambiaDomanda;
     labelFalse.appendChild(inputFalse);
-    labelFalse.appendChild(document.createTextNode(domandaCorrente.incorrect_answers));
+    labelFalse.appendChild(document.createTextNode("False"));
     risposte.appendChild(labelFalse);
   }
 };
 
 visualizzaDomanda(iQuest);
+
+// promemoria: trasformare gli input in button con il testo all'interno (forse .innertext?)
