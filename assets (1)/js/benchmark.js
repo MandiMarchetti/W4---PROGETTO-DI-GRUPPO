@@ -99,22 +99,33 @@ const cambiaDomanda = () => {
 // creo una funzione che mi permetta di visualizzare le domande con le risposte
 
 const visualizzaDomanda = (iQuest) => {
-  const domandaCorrente = questions[iQuest]; // usando l'indice delle domande all'interno della funzione così da non essere constretto a fare un ciclo
+  const domandaCorrente = questions[iQuest];
   domande.innerText = domandaCorrente.question;
 
-  risposte.innerText = ""; // con questo codice pulisco le risposte per poterne inserire di nuove
+  risposte.innerText = "";
 
-  for (let i = 0; i < domandaCorrente.incorrect_answers.length; i++) {
-    const risposta = domandaCorrente.incorrect_answers[i];
+  if (domandaCorrente.type === "multiple") {
+    for (let i = 0; i < domandaCorrente.incorrect_answers.length; i++) {
+      const risposta = domandaCorrente.incorrect_answers[i];
 
-    const label = document.createElement("label"); // creo una label nel documento
-    const input = document.createElement("input"); // creo un imput per la label creata
-    input.type = "radio";
-    input.name = risposta;
-    input.value = "sbagliata";
-    label.appendChild(input);
-    label.appendChild(document.createTextNode(risposta));
-    risposte.appendChild(label);
+      const labelIncorrect = document.createElement("label");
+      const inputIncorrect = document.createElement("input");
+      inputIncorrect.type = "radio";
+      inputIncorrect.name = `risposta_${iQuest}`;
+      inputIncorrect.value = "sbagliata";
+      labelIncorrect.appendChild(inputIncorrect);
+      labelIncorrect.appendChild(document.createTextNode(risposta));
+      risposte.appendChild(labelIncorrect);
+    }
+
+    const labelCorrect = document.createElement("label");
+    const inputCorrect = document.createElement("input");
+    inputCorrect.type = "radio";
+    inputCorrect.name = `risposta_${iQuest}`;
+    inputCorrect.value = "Giusta!";
+    labelCorrect.appendChild(inputCorrect);
+    labelCorrect.appendChild(document.createTextNode(domandaCorrente.correct_answer));
+    risposte.appendChild(labelCorrect);
   }
 };
 
