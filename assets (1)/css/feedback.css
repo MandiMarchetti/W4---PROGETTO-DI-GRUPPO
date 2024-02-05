@@ -57,4 +57,6 @@ section {
 
 button {
   margin: 4rem 0;
+  padding: 1.5rem 3rem;
+  background-color: #01ffff;
 }
