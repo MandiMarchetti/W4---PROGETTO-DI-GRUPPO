@@ -3,3 +3,66 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+/* Per aggiustare tutto il contenuto nella stessa magine */
+.main{
+    margin: 25px;
+}
+
+
+
+/* Image of the 'logo' */
+body div img{
+    width: 180px;
+    height: auto;
+}
+
+/* content center*/
+.content{
+    
+}
+
+.content h1{
+    font-family: 'Outfit', sans-serif;
+    font-weight: 100;
+    font-size: 60px;
+    color:white;
+}
+
+.content h3{
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    color: #c2128d;
+}
+
+.content p{
+    color:white;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+.content ul{
+    color:white;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+/* checkbox content*/
+.checkbox p{
+    display: inline;
+    color:white;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+}
+
+.checkbox button{
+    width: 160px;
+    height: 50px;
+    background-color: #00ffff;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight:700;
+    color: #0b1840;
+
+}
