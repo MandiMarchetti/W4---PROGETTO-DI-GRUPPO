@@ -54,6 +54,7 @@ body div img{
     color:white;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
+    line-height: 18px;
 }
 
 /*list*/
@@ -63,6 +64,8 @@ body div img{
     color:white;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
+    line-height: 23px;
+
 }
 
 /* checkbox content*/
@@ -90,9 +93,6 @@ body div img{
     font-size: 20px;
     font-weight:700;
     color: #0b1840;
-    margin-left: 6em
+    margin-left: 7em;
 }
 
-.block{
-    display: block;
-}
