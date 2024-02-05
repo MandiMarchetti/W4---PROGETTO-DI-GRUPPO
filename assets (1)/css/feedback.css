@@ -36,6 +36,16 @@ h2 {
   margin: 3rem;
 }
 
+.imggrayscale {
+  margin-inline: 0.3rem;
+  filter: grayscale(1);
+}
+
+.activestarsimg {
+  filter: none;
+  margin-inline: 0.3rem;
+}
+
 p {
   font-size: 1.5rem;
 }
