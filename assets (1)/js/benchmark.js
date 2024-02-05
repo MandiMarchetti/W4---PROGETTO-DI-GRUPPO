@@ -89,4 +89,33 @@ let iQuest = 0;
 const domande = document.getElementById("domande");
 const risposte = document.getElementById("risposte");
 
+const cambiaDomanda = () => {
+  if (iQuest < questions.length) {
+    iQuest++;
+    visualizzaDomanda(iQuest);
+  }
+};
+
 // creo una funzione che mi permetta di visualizzare le domande con le risposte
+
+const visualizzaDomanda = (iQuest) => {
+  const domandaCorrente = questions[iQuest]; // usando l'indice delle domande all'interno della funzione così da non essere constretto a fare un ciclo
+  domande.innerText = domandaCorrente.question;
+
+  risposte.innerText = ""; // con questo codice pulisco le risposte per poterne inserire di nuove
+
+  for (let i = 0; i < domandaCorrente.incorrect_answers.length; i++) {
+    const risposta = domandaCorrente.incorrect_answers[i];
+
+    const label = document.createElement("label"); // creo una label nel documento
+    const input = document.createElement("input"); // creo un imput per la label creata
+    input.type = "radio";
+    input.name = risposta;
+    input.value = "sbagliata";
+    label.appendChild(input);
+    label.appendChild(document.createTextNode(risposta));
+    risposte.appendChild(label);
+  }
+};
+
+visualizzaDomanda(iQuest);
