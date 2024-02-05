@@ -10,7 +10,7 @@ body {
 }
 
 header {
-  height: 10rem;
+  height: 8rem;
   text-align: left;
 }
 
@@ -59,4 +59,9 @@ button {
   margin: 4rem 0;
   padding: 1.5rem 3rem;
   background-color: #01ffff;
+  border-radius: 10px;
+}
+
+button:hover {
+  box-shadow: 0 0 10px #01ffff;
 }
