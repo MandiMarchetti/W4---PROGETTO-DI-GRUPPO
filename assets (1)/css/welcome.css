@@ -6,14 +6,16 @@ body{
 
 /* Per aggiustare tutto il contenuto nella stessa magine */
 .main{
-    margin: 25px;
+    margin-top: 30px;
+    margin-left: 70px;
+    margin-right: 70px;
 }
 
 
 
 /* Image of the 'logo' */
 body div img{
-    width: 180px;
+    width: 170px;
     height: auto;
 }
 
@@ -22,26 +24,42 @@ body div img{
     
 }
 
+/*Welcome to your exam*/
 .content h1{
+    margin: 0;
+    padding-top: 80px;
     font-family: 'Outfit', sans-serif;
     font-weight: 100;
     font-size: 60px;
     color:white;
+    line-height: 50px;
+    
 }
 
+
+
+/*Instruction*/
 .content h3{
+    margin: 0;
+    padding-top: 40px;
     font-family: 'Inter', sans-serif;
-    font-size: 22px;
+    font-size: 25px;
     color: #c2128d;
 }
 
+/* We don't...*/
 .content p{
+    margin: 0;
+    padding-top: 10px;
     color:white;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
 }
 
+/*list*/
 .content ul{
+    margin: 0;
+    padding-top: 40px;
     color:white;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
@@ -56,7 +74,7 @@ body div img{
 }
 
 .checkbox button{
-    width: 160px;
+    width: 180px;
     height: 50px;
     background-color: #00ffff;
     border: none;
