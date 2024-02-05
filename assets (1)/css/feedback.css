@@ -45,7 +45,8 @@ input {
   border: 0;
   align-items: start;
   width: 90%;
-  height: 1.5rem;
+  height: 2rem;
+  color: white;
 }
 
 section {
