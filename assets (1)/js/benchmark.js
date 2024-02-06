@@ -85,29 +85,34 @@ const questions = [
 //timer
 
 const tempo = document.getElementById("tempo");
+const timers = [];
 
 function tempoRimasto(scadenza) {
   let now = new Date().getTime();
   let tempoRimasto = scadenza - now;
-
   let sec = Math.floor((tempoRimasto / 1000) % 60);
-  total = Math.ceil(tempoRimasto / 1000);
+  let total = Math.ceil(tempoRimasto / 1000);
   return { secondi: sec, total: total };
 }
 
 function inizializzoTimer(id, scadenza) {
+  const previousTimer = timers.pop();
+  if (previousTimer) {
+    clearInterval(previousTimer);
+  }
   let timer = document.getElementById(id);
   let intervalloTempo = setInterval(function () {
     let t = tempoRimasto(scadenza);
     timer.innerHTML = "secondi: " + t.secondi;
     if (t.total <= 1) {
       clearInterval(intervalloTempo);
+      cambiaDomanda();
     }
   }, 1000);
+
+  timers.push(intervalloTempo);
 }
 
-let scadenza = new Date().getTime() + 10000;
-inizializzoTimer("tempo", scadenza);
 // richiamo gli elementi e creo un indice per leggere il const question.
 
 let iQuest = 0;
@@ -131,11 +136,14 @@ const cambiaDomanda = () => {
     // sovrascrivo il numero della pagina con l'indice aggiornato
     pagine.innerText = `QUESTION ${iQuest + 1}`;
 
+    timers.forEach((timer) => clearInterval(timer));
     let scadenza = new Date().getTime() + 10000;
     inizializzoTimer("tempo", scadenza);
   }
 };
 
+let scadenza = new Date().getTime() + 10000;
+inizializzoTimer("tempo", scadenza);
 // creo una funzione che mi permetta di visualizzare le domande con le risposte
 
 const visualizzaDomanda = (iQuest) => {
