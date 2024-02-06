@@ -31,11 +31,15 @@ executeRating(ratingStars);
 
 //genero la funzione per inviare i dati indicati dall'utente nel form al click del bottone
 
-const button1 = document.getElementById("sendReviewButton");
-const inputText = document.getElementById("reviewComment");
+//const button1 = document.getElementById("sendReviewButton");
+//const inputText = document.getElementById("reviewComment");
 
-function sendReview() {
-  inputText.setAttribute("value");
-}
+//function sendReview() {
+//  inputText.setAttribute("value");
+//}
 
-button1.addEventListener("click", sendReview());
+//button1.addEventListener("click", sendReview());
+
+document.getElementById("sendReviewButton").addEventListener("click", function () {
+  alert("Grazie per l'attenzione! (ci aspettiamo almeno 10 come voto)");
+});
