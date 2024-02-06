@@ -82,17 +82,57 @@ const questions = [
   },
 ];
 
-//   richiamo gli elementi e creo un indice per leggere il const question.
+//timer
+
+const tempo = document.getElementById("tempo");
+
+function tempoRimasto(scadenza) {
+  let now = new Date().getTime();
+  let tempoRimasto = scadenza - now;
+
+  let sec = Math.floor((tempoRimasto / 1000) % 60);
+  total = Math.ceil(tempoRimasto / 1000);
+  return { secondi: sec, total: total };
+}
+
+function inizializzoTimer(id, scadenza) {
+  let timer = document.getElementById(id);
+  let intervalloTempo = setInterval(function () {
+    let t = tempoRimasto(scadenza);
+    timer.innerHTML = "secondi: " + t.secondi;
+    if (t.total <= 1) {
+      clearInterval(intervalloTempo);
+    }
+  }, 1000);
+}
+
+let scadenza = new Date().getTime() + 10000;
+inizializzoTimer("tempo", scadenza);
+// richiamo gli elementi e creo un indice per leggere il const question.
 
 let iQuest = 0;
 
 const domande = document.getElementById("domande");
 const risposte = document.getElementById("risposte");
 
+//creo il numero della pagina interattivo
+
+const pagine = document.getElementById("pages");
+//imposto il suo testo con i backtick in modo da rendere interattivo il suo indice e gli do +1 perchè parte da 0
+pagine.innerText = `QUESTION ${iQuest + 1}`;
+
 const cambiaDomanda = () => {
+  //verifico che l'indice iQuest sia inferiore alla lunghezza dell'array questions
   if (iQuest < questions.length) {
+    // con l'incremento dell'indice ci assicuriamo che quando la funzione è chiamata leggiamo la domanda successiva
     iQuest++;
+    // chiama la funzione con l'indice aggiornato
     visualizzaDomanda(iQuest);
+    // sovrascrivo il numero della pagina con l'indice aggiornato
+    pagine.innerText = `QUESTION ${iQuest + 1}`;
+
+    let scadenza = new Date().getTime() + 10000;
+    inizializzoTimer("tempo", scadenza);
   }
 };
 
@@ -103,7 +143,7 @@ const visualizzaDomanda = (iQuest) => {
   const domandaCorrente = questions[iQuest];
   //inserisco le domande nel mio h1 in HTML
   domande.innerText = domandaCorrente.question;
-
+  //cancello le risposte al rinnovo della domanda
   risposte.innerText = "";
   // creo le domande a risposta multipla
   if (domandaCorrente.type === "multiple") {
@@ -151,7 +191,6 @@ const visualizzaDomanda = (iQuest) => {
     risposte.appendChild(buttonFalse);
   }
 };
+
 // avvio la funzione
 visualizzaDomanda(iQuest);
-
-// promemoria: trasformare gli input in button con il testo all'interno (forse .innertext?)
