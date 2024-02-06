@@ -12,7 +12,7 @@ const questions = [
     type: "multiple",
     difficulty: "easy",
     question:
-      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
     correct_answer: "Final",
     incorrect_answers: ["Static", "Private", "Public"],
   },
@@ -99,56 +99,59 @@ const cambiaDomanda = () => {
 // creo una funzione che mi permetta di visualizzare le domande con le risposte
 
 const visualizzaDomanda = (iQuest) => {
+  // creo una variabile per semplificare la lettura contenente l'indice di questions
   const domandaCorrente = questions[iQuest];
+  //inserisco le domande nel mio h1 in HTML
   domande.innerText = domandaCorrente.question;
 
   risposte.innerText = "";
-
+  // creo le domande a risposta multipla
   if (domandaCorrente.type === "multiple") {
+    // faccio un ciclo for delle domande sbagliate in modo da poter utilizzare l'array
     for (let i = 0; i < domandaCorrente.incorrect_answers.length; i++) {
-      const risposta = domandaCorrente.incorrect_answers[i];
+      const rispostaSbagliata = domandaCorrente.incorrect_answers[i];
 
-      const labelIncorrect = document.createElement("label");
-      const inputIncorrect = document.createElement("input");
-      // definisco gli input che devono avere le risposte
-      inputIncorrect.type = "radio";
-      inputIncorrect.value = "sbagliata";
-      inputIncorrect.onclick = cambiaDomanda;
-      //inserisco gli elementi nell'HTML
-      labelIncorrect.appendChild(inputIncorrect);
-      labelIncorrect.appendChild(document.createTextNode(risposta));
-      risposte.appendChild(labelIncorrect);
+      const buttonIncorrect = document.createElement("button");
+      // definisco i button che devono contenere le risposte
+      buttonIncorrect.type = "radio";
+      // inserisco il value per in futuro dare un valore alla risposta e nel caso creare un punteggio
+      buttonIncorrect.value = "sbagliata";
+      // lo collego alla funzione precedentemente creata in modo che possa andare avanti la domanda
+      buttonIncorrect.onclick = cambiaDomanda;
+      //inserisco il testo
+      buttonIncorrect.innerText = rispostaSbagliata;
+      //inserisco i button nell'HTML
+      risposte.appendChild(buttonIncorrect);
     }
 
-    const labelCorrect = document.createElement("label");
-    const inputCorrect = document.createElement("input");
-    inputCorrect.type = "radio";
-    inputCorrect.value = "Giusta!";
-    inputCorrect.onclick = cambiaDomanda;
-    labelCorrect.appendChild(inputCorrect);
-    labelCorrect.appendChild(document.createTextNode(domandaCorrente.correct_answer));
-    risposte.appendChild(labelCorrect);
-  } else if (domandaCorrente.type === "boolean") {
-    const labelTrue = document.createElement("label");
-    const inputTrue = document.createElement("input");
-    inputTrue.type = "radio";
-    inputTrue.value = "Vera!";
-    inputTrue.onclick = cambiaDomanda;
-    labelTrue.appendChild(inputTrue);
-    labelTrue.appendChild(document.createTextNode("True"));
-    risposte.appendChild(labelTrue);
+    //ripeto il procedimento per le domande corrette
 
-    const labelFalse = document.createElement("label");
-    const inputFalse = document.createElement("input");
-    inputFalse.type = "radio";
-    inputFalse.value = "Falsa!";
-    inputFalse.onclick = cambiaDomanda;
-    labelFalse.appendChild(inputFalse);
-    labelFalse.appendChild(document.createTextNode("False"));
-    risposte.appendChild(labelFalse);
+    const buttonCorrect = document.createElement("button");
+    buttonCorrect.type = "radio";
+    buttonCorrect.value = "Giusta!";
+    buttonCorrect.onclick = cambiaDomanda;
+    buttonCorrect.innerText = domandaCorrente.correct_answer;
+    risposte.appendChild(buttonCorrect);
+
+    //ora creo le domande booleane
+  } else if (domandaCorrente.type === "boolean") {
+    // questa volta creo un bottone per la risposta True e successivamente False
+    const buttonTrue = document.createElement("button");
+    buttonTrue.type = "radio";
+    buttonTrue.value = "Vera!";
+    buttonTrue.onclick = cambiaDomanda;
+    buttonTrue.innerText = domandaCorrente.correct_answer;
+    risposte.appendChild(buttonTrue);
+
+    const buttonFalse = document.createElement("button");
+    buttonFalse.type = "radio";
+    buttonFalse.value = "Falsa!";
+    buttonFalse.onclick = cambiaDomanda;
+    buttonFalse.innerText = domandaCorrente.incorrect_answers;
+    risposte.appendChild(buttonFalse);
   }
 };
-
+// avvio la funzione
 visualizzaDomanda(iQuest);
 
 // promemoria: trasformare gli input in button con il testo all'interno (forse .innertext?)
