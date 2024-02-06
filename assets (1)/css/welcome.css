@@ -1,3 +1,5 @@
+
+
 body{
     background-image: URL("../bg.jpg");
     background-repeat: no-repeat;
@@ -100,6 +102,7 @@ button a{
 }
 
 .button-shining{
-    box-shadow:8px 8px 8px #00ffff; 
+    box-shadow:2px 2px 8px  #00ffff; 
+
 }
 
