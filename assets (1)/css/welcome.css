@@ -1,4 +1,4 @@
-
+/*//WELCOME PAGE //*/
 
 body{
     background-image: URL("../bg.jpg");
@@ -37,10 +37,7 @@ body div img{
     line-height: 50px;
     
 }
-
-
-
-/*Instruction*/
+/*Title - INSTRUCTION*/
 .content h3{
     margin: 0;
     padding-top: 40px;
@@ -48,8 +45,7 @@ body div img{
     font-size: 25px;
     color: #c2128d;
 }
-
-/* We don't...*/
+/* Main paragraph - WE DON'T EXPECT...*/
 .content p{
     margin: 0;
     padding-top: 10px;
@@ -58,8 +54,7 @@ body div img{
     font-size: 16px;
     line-height: 18px;
 }
-
-/*list*/
+/*LIST*/
 .content ul{
     margin: 0;
     padding-top: 40px;
@@ -70,13 +65,11 @@ body div img{
 
 }
 
-/* checkbox content*/
-
+/* CHECKBOX - content */
 .checkbox{
     margin: 0;
     padding-top: 60px;
 }
-
 .checkbox p{
     display: inline-block;
     color:white;
@@ -85,7 +78,7 @@ body div img{
 }
 
 
-/* button*/
+/* BUTTON*/
  button{
     width: 180px;
     height: 50px;
@@ -95,7 +88,10 @@ body div img{
     font-size: 20px;
     font-weight:700;
     margin-left: 7em;
+    color: #0b1840;
 }
+
+/*it'll be activated when the checkbox was checked*/
 button a{
     text-decoration: none;
     color: #0b1840;
@@ -106,3 +102,5 @@ button a{
 
 }
 
+
+/*//Fino della pagina WELCOME PAGE//*/
