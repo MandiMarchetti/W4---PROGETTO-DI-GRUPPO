@@ -108,15 +108,21 @@ function inizializzoTimer(id, scadenza) {
     let t = tempoRimasto(scadenza);
     timer.innerHTML = "secondi: " + t.secondi;
 
-    let progress = 360 * (1 - t.total / 10);
+    let progress = 1 - t.total / 10; // Utilizzo di una scala da 0 a 1
 
     context.clearRect(0, 0, doughnut.width, doughnut.height);
 
+    const radius = Math.min(doughnut.width / 2, doughnut.height / 2) - 40;
+
     context.beginPath();
-    context.arc(50, 50, 40, 0, (progress * Math.PI) / 180);
+    context.arc(doughnut.width / 2, doughnut.height / 2, radius, 0, 2 * Math.PI * progress, true); // l'opzione true fa disegnare l'arco in senso orario
+    context.lineWidth = 10; // Impostare la larghezza della linea del bordo
+    context.strokeStyle = "#4CAF50"; // Colore del bordo
+    context.fillStyle = "transparent"; // Colore del riempimento interno
+    context.fill(); // Riempimento interno del cerchio
     context.stroke();
 
-    if (t.total <= 1) {
+    if (t.total <= 0) {
       clearInterval(intervalloTempo);
       cambiaDomanda();
     }
