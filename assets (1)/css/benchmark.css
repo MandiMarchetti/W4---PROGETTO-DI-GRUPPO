@@ -12,3 +12,8 @@ body {
   width: 10em;
   height: auto;
 }
+.doughnut {
+  width: 100px;
+  height: 100px;
+  color: white;
+}

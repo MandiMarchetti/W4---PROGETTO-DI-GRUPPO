@@ -87,6 +87,9 @@ const questions = [
 const tempo = document.getElementById("tempo");
 const timers = [];
 
+const doughnut = document.querySelector(".doughnut");
+const context = doughnut.getContext("2d");
+
 function tempoRimasto(scadenza) {
   let now = new Date().getTime();
   let tempoRimasto = scadenza - now;
@@ -104,6 +107,15 @@ function inizializzoTimer(id, scadenza) {
   let intervalloTempo = setInterval(function () {
     let t = tempoRimasto(scadenza);
     timer.innerHTML = "secondi: " + t.secondi;
+
+    let progress = 360 * (1 - t.total / 10);
+
+    context.clearRect(0, 0, doughnut.width, doughnut.height);
+
+    context.beginPath();
+    context.arc(50, 50, 40, 0, (progress * Math.PI) / 180);
+    context.stroke();
+
     if (t.total <= 1) {
       clearInterval(intervalloTempo);
       cambiaDomanda();
