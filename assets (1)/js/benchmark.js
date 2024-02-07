@@ -166,60 +166,45 @@ const cambiaDomanda = () => {
 
 let scadenza = new Date().getTime() + 10000;
 inizializzoTimer("tempo", scadenza);
-// creo una funzione che mi permetta di visualizzare le domande con le risposte
+//creo una funzione generica che serva a mischiare elementi all'interno di array
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+//visualizzo domande randomicamente
 
 const visualizzaDomanda = (iQuest) => {
   // creo una variabile per semplificare la lettura contenente l'indice di questions
-  const domandaCorrente = questions[iQuest];
-  //inserisco le domande nel mio h1 in HTML
+  const domandaCorrente = questions[iQuest]; //inserisco le domande nel mio h1 in HTML
   domande.innerText = domandaCorrente.question;
   //cancello le risposte al rinnovo della domanda
   risposte.innerText = "";
-  // creo le domande a risposta multipla
-  if (domandaCorrente.type === "multiple") {
-    // faccio un ciclo for delle domande sbagliate in modo da poter utilizzare l'array
-    for (let i = 0; i < domandaCorrente.incorrect_answers.length; i++) {
-      const rispostaSbagliata = domandaCorrente.incorrect_answers[i];
+  //creo una copia dell'array di risposte sbagliate
+  const risposteSbagliate = [...domandaCorrente.incorrect_answers];
+  //creo una variabile più leggibile delle risposte corrette
+  const rispostaCorretta = domandaCorrente.correct_answer;
 
-      const buttonIncorrect = document.createElement("button");
-      // definisco i button che devono contenere le risposte
-      buttonIncorrect.type = "radio";
-      // inserisco il value per in futuro dare un valore alla risposta e nel caso creare un punteggio
-      buttonIncorrect.value = "sbagliata";
-      // lo collego alla funzione precedentemente creata in modo che possa andare avanti la domanda
-      buttonIncorrect.onclick = cambiaDomanda;
-      //inserisco il testo
-      buttonIncorrect.innerText = rispostaSbagliata;
-      //inserisco i button nell'HTML
-      risposte.appendChild(buttonIncorrect);
-    }
-
-    //ripeto il procedimento per le domande corrette
-
-    const buttonCorrect = document.createElement("button");
-    buttonCorrect.type = "radio";
-    buttonCorrect.value = "Giusta!";
-    buttonCorrect.onclick = cambiaDomanda;
-    buttonCorrect.innerText = domandaCorrente.correct_answer;
-    risposte.appendChild(buttonCorrect);
-
-    //ora creo le domande booleane
-  } else if (domandaCorrente.type === "boolean") {
-    // questa volta creo un bottone per la risposta True e successivamente False
-    const buttonTrue = document.createElement("button");
-    buttonTrue.type = "radio";
-    buttonTrue.value = "Vera!";
-    buttonTrue.onclick = cambiaDomanda;
-    buttonTrue.innerText = domandaCorrente.correct_answer;
-    risposte.appendChild(buttonTrue);
-
-    const buttonFalse = document.createElement("button");
-    buttonFalse.type = "radio";
-    buttonFalse.value = "Falsa!";
-    buttonFalse.onclick = cambiaDomanda;
-    buttonFalse.innerText = domandaCorrente.incorrect_answers;
-    risposte.appendChild(buttonFalse);
-  }
+  //mescolo le risposte giuste con le sbagliate
+  const risposteMiste = shuffleArray([...risposteSbagliate, rispostaCorretta]);
+  //creo i button con dentro le risposte
+  risposteMiste.forEach((risposta) => {
+    //creo un button per ogni risposta
+    const button = document.createElement("button");
+    //assegno un tipo al button
+    button.type = "radio";
+    //gli do un valore
+    button.value = risposta;
+    //gli assegno al click la funzione che cambia domanda
+    button.onclick = cambiaDomanda;
+    //scrivo all'interno il testo della risposta
+    button.innerText = risposta;
+    //inserisco i button nel div
+    risposte.appendChild(button);
+  });
 };
 
 // avvio la funzione
