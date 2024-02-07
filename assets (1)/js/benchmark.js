@@ -148,7 +148,25 @@ const pagine = document.getElementById("pages");
 //imposto il suo testo con i backtick in modo da rendere interattivo il suo indice e gli do +1 perchè parte da 0
 pagine.innerText = `QUESTION ${iQuest + 1}`;
 
+//inizializzo il timer quando apro la domanda
+let scadenza = new Date().getTime() + 10000;
+inizializzoTimer("tempo", scadenza);
+
+// creo due variabili che mi serviranno per assegnare il punteggio al cambio domanda
+let punteggioCorretto = 0;
+let punteggioErrato = 0;
+
 const cambiaDomanda = () => {
+  //al cambio domanda assegno un valore alla risposta
+  //creo una variabile richiamando i button selezionati (checked)
+  const rispostaUtente = document.querySelector('button[type="radio"]:checked');
+  //creo un if ed else dove se rispondo correttamente la mia variabile di punteggioCorretto aumenterà di 1, altrimenti aumenta quello di punteggioErrato
+  if (rispostaUtente.value === domandaCorrente.correct_answer) {
+    punteggioCorretto++;
+  } else {
+    punteggioErrato++;
+  }
+
   //verifico che l'indice iQuest sia inferiore alla lunghezza dell'array questions
   if (iQuest < questions.length) {
     // con l'incremento dell'indice ci assicuriamo che quando la funzione è chiamata leggiamo la domanda successiva
@@ -164,8 +182,6 @@ const cambiaDomanda = () => {
   }
 };
 
-let scadenza = new Date().getTime() + 10000;
-inizializzoTimer("tempo", scadenza);
 //creo una funzione generica che serva a mischiare elementi all'interno di array
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -196,8 +212,6 @@ const visualizzaDomanda = (iQuest) => {
     const button = document.createElement("button");
     //assegno un tipo al button
     button.type = "radio";
-    //gli do un valore
-    button.value = risposta;
     //gli assegno al click la funzione che cambia domanda
     button.onclick = cambiaDomanda;
     //scrivo all'interno il testo della risposta
