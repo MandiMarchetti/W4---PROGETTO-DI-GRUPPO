@@ -147,24 +147,8 @@ const pagine = document.getElementById("pages");
 //imposto il suo testo con i backtick in modo da rendere interattivo il suo indice e gli do +1 perchè parte da 0
 pagine.innerText = `QUESTION ${iQuest + 1}`;
 
-//inizializzo il timer quando apro la domanda
-
-// creo due variabili che mi serviranno per assegnare il punteggio al cambio domanda
-let punteggioCorretto = 0;
-let punteggioErrato = 0;
-
 const cambiaDomanda = () => {
-  //al cambio domanda assegno un valore alla risposta
-  //creo una variabile richiamando i button selezionati (checked)
-  const rispostaUtente = document.querySelector('button[type="radio"]:checked');
-  console.log(rispostaUtente);
-  //creo un if ed else dove se rispondo correttamente la mia variabile di punteggioCorretto aumenterà di 1, altrimenti aumenta quello di punteggioErrato
-  //risposta utente si riferisce ad un valore undefined che è dato quando non si risponde in tempo
-  if (rispostaUtente && rispostaUtente.value === domandaCorrente.correct_answer) {
-    punteggioCorretto++;
-  } else {
-    punteggioErrato++;
-  }
+  //verifico se il punteggio viene assegnato in modo corretto
   mostraPunteggioParziale();
   //verifico che l'indice iQuest sia inferiore alla lunghezza dell'array questions
   if (iQuest < questions.length - 1) {
@@ -177,9 +161,7 @@ const cambiaDomanda = () => {
     clearInterval(timerId); // Usa la variabile timerId per cancellare l'intervallo
     t.total = 11; //impostanto il total a 11 il grafico sarà visibile da 10, altrimenti sarebbe visibile solo da 9
     t.secondi = 11; //reimposto i secondi altrimenti rimarrebbe t a 0
-    timeStart();
-  } else {
-    mostraPunteggioFinale();
+    timeStart(); //riavvio il timer
   }
 };
 
@@ -191,6 +173,14 @@ function shuffleArray(array) {
   }
   return array;
 }
+//creo una variabile per creare un punteggio
+let punteggio = 0;
+// questa funzione serve a verificare se la risposta è giusta ed ad aggiungere un punteggio
+const verificaRisposta = (rispSalezionata, rispCorretta) => {
+  if (rispSalezionata === rispCorretta) {
+    punteggio++;
+  }
+};
 
 //visualizzo domande randomicamente
 
@@ -212,8 +202,11 @@ const visualizzaDomanda = (iQuest) => {
     const button = document.createElement("button");
     //assegno un tipo al button
     button.type = "radio";
-    //gli assegno al click la funzione che cambia domanda
-    button.onclick = cambiaDomanda;
+    //gli assegno al click due funzioni
+    button.addEventListener("click", () => {
+      verificaRisposta(risposta, domandaCorrente.correct_answer); //punteggio
+      cambiaDomanda(); //cambio domanda
+    });
     //scrivo all'interno il testo della risposta
     button.innerText = risposta;
     //inserisco i button nel div
@@ -226,21 +219,7 @@ visualizzaDomanda(iQuest);
 
 function mostraPunteggioParziale() {
   const totaleDomande = questions.length;
-  const percentualeCorretto = (punteggioCorretto / totaleDomande) * 100;
-  const percentualeErrato = (punteggioErrato / totaleDomande) * 100;
+  const percentualeCorretto = (punteggio / totaleDomande) * 100;
 
-  console.log(`Punteggio Corretto: ${punteggioCorretto}/${totaleDomande} (${percentualeCorretto}%)`);
-  console.log(`Punteggio Errato: ${punteggioErrato}/${totaleDomande} (${percentualeErrato}%)`);
+  console.log(`Punteggio: ${punteggio}/${totaleDomande} (${percentualeCorretto}%)`);
 }
-
-function mostraPunteggioFinale() {
-  const totaleDomande = questions.length;
-  const percentualeCorretto = (punteggioCorretto / totaleDomande) * 100;
-  const percentualeErrato = (punteggioErrato / totaleDomande) * 100;
-
-  console.log(`Punteggio Corretto: ${punteggioCorretto}/${totaleDomande} (${percentualeCorretto}%)`);
-  console.log(`Punteggio Errato: ${punteggioErrato}/${totaleDomande} (${percentualeErrato}%)`);
-}
-
-// Chiamare questa funzione alla fine del quiz
-mostraPunteggioFinale();
