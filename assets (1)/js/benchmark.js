@@ -81,67 +81,66 @@ const questions = [
     incorrect_answers: ["Python", "C", "Jakarta"],
   },
 ];
+// richiamo il canvas con l'id tempo
+const doughnut = document.querySelector(".doughnut");
+const context = doughnut.getContext("2d");
 
-//timer
+const tempo = document.getElementById("tempo");
+let timerId;
 
-const tempo = document.getElementById("tempo"); // richiamo il canvas con l'id tempo
-const timers = []; // creo un array così da avere un timer per ogni domanda
+const t = { total: 11, secondi: 11 }; // setto tutto a 11 per ovviare al ritardo di caricamento del grafico e timer
 
-const doughnut = document.querySelector(".doughnut"); // ho dato una classe in modo che non vada in conflitto con l'id tempo
-const context = doughnut.getContext("2d"); // da lo stile al grafico
+const timeStart = () => {
+  timerId = setInterval(function () {
+    // Modifica la condizione per decrementare solo quando t.secondi è maggiore di 0
+    if (t.secondi > 1) {
+      t.secondi--;
+    } else {
+      clearInterval(timerId);
+      cambiaDomanda();
+      return; // Esci dalla funzione in modo che il codice successivo non venga eseguito
+    }
 
-//setto il timer
-
-function tempoRimasto(scadenza) {
-  let now = new Date().getTime();
-  let tempoRimasto = scadenza - now;
-  let sec = Math.floor((tempoRimasto / 1000) % 60);
-  let total = Math.ceil(tempoRimasto / 1000);
-  return { secondi: sec, total: total };
-}
-
-//Creo il timer e gli assegno come stile il doughnut
-
-function inizializzoTimer(id, scadenza) {
-  const previousTimer = timers.pop();
-  if (previousTimer) {
-    clearInterval(previousTimer);
-  }
-  let timer = document.getElementById(id);
-  let intervalloTempo = setInterval(function () {
-    let t = tempoRimasto(scadenza);
-    timer.innerHTML = "secondi: " + t.secondi;
-
-    let progress = 1 - t.total / 10; // Utilizzo di una scala da 0 a 1
+    let progress = 1 - t.secondi / t.total;
 
     context.clearRect(0, 0, doughnut.width, doughnut.height);
 
     const radius = Math.min(doughnut.width / 2, doughnut.height / 2) - 40;
+    const centerX = doughnut.width / 2;
+    const centerY = doughnut.height / 2;
 
+    const startAngle = -Math.PI / 2;
+    const endAngle = -Math.PI / 2 + 2 * Math.PI * progress;
     context.beginPath();
-    context.arc(doughnut.width / 2, doughnut.height / 2, radius, 0, 2 * Math.PI * progress, true); // l'opzione true fa disegnare l'arco in senso orario
-    context.lineWidth = 10; // Impostare la larghezza della linea del bordo
-    context.strokeStyle = "#4CAF50"; // Colore del bordo
-    context.fillStyle = "transparent"; // Colore del riempimento interno
-    context.fill(); // Riempimento interno del cerchio
+
+    // Imposta progress a 0 quando t.secondi è uguale a t.total
+    if (t.secondi === t.total) {
+      progress = 0;
+    }
+
+    context.arc(centerX, centerY, radius, startAngle, endAngle, true);
+    context.lineWidth = 10;
+    context.strokeStyle = "#4CAF50";
+    context.fillStyle = "transparent";
+    context.fill();
     context.stroke();
 
-    if (t.total <= 0) {
-      clearInterval(intervalloTempo);
-      cambiaDomanda();
-    }
+    context.font = "20px Arial";
+    context.fillStyle = "#FFFFFF";
+
+    context.fillText(t.secondi, centerX - 10, centerY + 10);
   }, 1000);
+};
 
-  timers.push(intervalloTempo); // faccio un push nell'array dei timer
-}
-
+window.onload = function () {
+  timeStart();
+};
 // richiamo gli elementi e creo un indice per leggere il const question.
 
-let iQuest = 0;
+let iQuest = 0; //indice delle questions
 
 const domande = document.getElementById("domande");
 const risposte = document.getElementById("risposte");
-
 //creo il numero della pagina interattivo
 
 const pagine = document.getElementById("pages");
@@ -149,8 +148,6 @@ const pagine = document.getElementById("pages");
 pagine.innerText = `QUESTION ${iQuest + 1}`;
 
 //inizializzo il timer quando apro la domanda
-let scadenza = new Date().getTime() + 10000;
-inizializzoTimer("tempo", scadenza);
 
 // creo due variabili che mi serviranno per assegnare il punteggio al cambio domanda
 let punteggioCorretto = 0;
@@ -176,10 +173,10 @@ const cambiaDomanda = () => {
     visualizzaDomanda(iQuest);
     // sovrascrivo il numero della pagina con l'indice aggiornato
     pagine.innerText = `QUESTION ${iQuest + 1}`;
-
-    timers.forEach((timer) => clearInterval(timer));
-    let scadenza = new Date().getTime() + 10000;
-    inizializzoTimer("tempo", scadenza);
+    clearInterval(timerId); // Usa la variabile timerId per cancellare l'intervallo
+    t.total = 11; //impostanto il total a 11 il grafico sarà visibile da 10, altrimenti sarebbe visibile solo da 9
+    t.secondi = 10; //reimposto i secondi altrimenti rimarrebbe t a 0
+    timeStart();
   }
 };
 
@@ -195,8 +192,7 @@ function shuffleArray(array) {
 //visualizzo domande randomicamente
 
 const visualizzaDomanda = (iQuest) => {
-  // creo una variabile per semplificare la lettura contenente l'indice di questions
-  const domandaCorrente = questions[iQuest]; //inserisco le domande nel mio h1 in HTML
+  const domandaCorrente = questions[iQuest]; // creo una variabile per semplificare la lettura contenente l'indice di questions
   domande.innerText = domandaCorrente.question;
   //cancello le risposte al rinnovo della domanda
   risposte.innerText = "";
