@@ -1,3 +1,4 @@
+/* global rules */
 * {
   font-family: "Inter", sans-serif;
 }
@@ -5,14 +6,14 @@
 * input:focus {
   outline: none;
 }
-
+/* body general rules*/
 body {
   text-align: center;
   background-image: url("../bg.jpg");
   background-size: cover;
   color: white;
 }
-
+/* header rules*/
 .headerFeedPage {
   height: 6rem;
   text-align: left;
@@ -25,9 +26,13 @@ body {
   margin-top: 30px;
 }
 
+/* main section rules*/
+
 .mainFeedPage {
   margin: 0 20%;
 }
+
+/* text rules*/
 
 .h1FeedPage {
   font-size: 3rem;
@@ -38,7 +43,7 @@ body {
   font-size: 2rem;
   font-weight: 300;
 }
-
+/* review stars rules */
 #stars {
   height: 3rem;
   margin: 3rem;
@@ -54,6 +59,8 @@ body {
   filter: none;
   margin-inline: 0.3rem;
 }
+
+/* comment section rules*/
 
 .sectionFeedPage {
   border-bottom: 5px solid;
@@ -73,6 +80,8 @@ body {
   width: 100%;
 }
 
+/* input box rules*/
+
 .inputFeedPage {
   background-color: transparent;
   border: 0;
@@ -81,6 +90,8 @@ body {
   height: 2rem;
   color: white;
 }
+
+/* button rules*/
 
 .buttonFeedPage {
   margin: 4rem 0;
