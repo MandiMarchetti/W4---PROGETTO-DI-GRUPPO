@@ -161,6 +161,7 @@ const cambiaDomanda = () => {
   //creo una variabile richiamando i button selezionati (checked)
   const rispostaUtente = document.querySelector('button[type="radio"]:checked');
   //creo un if ed else dove se rispondo correttamente la mia variabile di punteggioCorretto aumenterà di 1, altrimenti aumenta quello di punteggioErrato
+  //risposta utente si riferisce ad un valore undefined che è dato quando non si risponde in tempo
   if (rispostaUtente && rispostaUtente.value === domandaCorrente.correct_answer) {
     punteggioCorretto++;
   } else {
