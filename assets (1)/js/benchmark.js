@@ -84,11 +84,13 @@ const questions = [
 
 //timer
 
-const tempo = document.getElementById("tempo");
-const timers = [];
+const tempo = document.getElementById("tempo"); // richiamo il canvas con l'id tempo
+const timers = []; // creo un array così da avere un timer per ogni domanda
 
-const doughnut = document.querySelector(".doughnut");
-const context = doughnut.getContext("2d");
+const doughnut = document.querySelector(".doughnut"); // ho dato una classe in modo che non vada in conflitto con l'id tempo
+const context = doughnut.getContext("2d"); // da lo stile al grafico
+
+//setto il timer
 
 function tempoRimasto(scadenza) {
   let now = new Date().getTime();
@@ -97,6 +99,8 @@ function tempoRimasto(scadenza) {
   let total = Math.ceil(tempoRimasto / 1000);
   return { secondi: sec, total: total };
 }
+
+//Creo il timer e gli assegno come stile il doughnut
 
 function inizializzoTimer(id, scadenza) {
   const previousTimer = timers.pop();
@@ -128,7 +132,7 @@ function inizializzoTimer(id, scadenza) {
     }
   }, 1000);
 
-  timers.push(intervalloTempo);
+  timers.push(intervalloTempo); // faccio un push nell'array dei timer
 }
 
 // richiamo gli elementi e creo un indice per leggere il const question.
