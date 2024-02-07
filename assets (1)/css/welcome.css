@@ -21,10 +21,6 @@ body div img{
     height: auto;
 }
 
-/* content center*/
-.content{
-    
-}
 
 /*Welcome to your exam*/
 .content h1{
@@ -84,6 +80,7 @@ body div img{
     height: 50px;
     background-color: #00ffff;
     border: none;
+    border-radius: 2px;
     font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-weight:700;
@@ -98,9 +95,96 @@ button a{
 }
 
 .button-shining{
-    box-shadow:2px 2px 8px  #00ffff; 
+    box-shadow:2px 2px 15px  #00ffff; 
 
 }
 
 
 /*//Fino della pagina WELCOME PAGE//*/
+
+
+/* CSS Matteo - Feedback page
+* {
+  box-sizing: border-box;
+
+  font-family: 'Inter', sans-serif;
+
+}
+
+body {
+  text-align: center;
+  background-image: url("../bg.jpg");
+  background-size: cover;
+  color: white;
+}
+
+header {
+  height: 8rem;
+  text-align: left;
+}
+
+header img {
+  padding: 2em;
+  height: 100%;
+}
+
+main {
+  margin: 0 20%;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+#stars {
+  height: 3rem;
+  margin: 3rem;
+}
+
+.imggrayscale {
+  margin-inline: 0.3rem;
+  filter: grayscale(1);
+}
+
+.activestarsimg {
+  filter: none;
+  margin-inline: 0.3rem;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+input {
+  background-color: transparent;
+  border: 0;
+  align-items: start;
+  width: 90%;
+  height: 2rem;
+  color: white;
+}
+
+section {
+  border-bottom: 5px solid;
+  border-color: #c2138d;
+  box-sizing: content-box;
+  margin-top: 4rem;
+}
+
+button {
+  margin: 4rem 0;
+  padding: 1.5rem 3rem;
+  background-color: #01ffff;
+  border-radius: 10px;
+}
+
+button:hover {
+  box-shadow: 0 0 10px #01ffff;
+}
+
+
+*/
