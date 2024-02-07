@@ -84,7 +84,7 @@ const questions = [
 // richiamo il canvas con l'id tempo
 const doughnut = document.querySelector(".doughnut");
 const context = doughnut.getContext("2d");
-
+let domandaCorrente; //viene definita in visualizzaDomanda()
 const tempo = document.getElementById("tempo");
 let timerId;
 
@@ -157,6 +157,7 @@ const cambiaDomanda = () => {
   //al cambio domanda assegno un valore alla risposta
   //creo una variabile richiamando i button selezionati (checked)
   const rispostaUtente = document.querySelector('button[type="radio"]:checked');
+  console.log(rispostaUtente);
   //creo un if ed else dove se rispondo correttamente la mia variabile di punteggioCorretto aumenterà di 1, altrimenti aumenta quello di punteggioErrato
   //risposta utente si riferisce ad un valore undefined che è dato quando non si risponde in tempo
   if (rispostaUtente && rispostaUtente.value === domandaCorrente.correct_answer) {
@@ -164,9 +165,9 @@ const cambiaDomanda = () => {
   } else {
     punteggioErrato++;
   }
-
+  mostraPunteggioParziale();
   //verifico che l'indice iQuest sia inferiore alla lunghezza dell'array questions
-  if (iQuest < questions.length) {
+  if (iQuest < questions.length - 1) {
     // con l'incremento dell'indice ci assicuriamo che quando la funzione è chiamata leggiamo la domanda successiva
     iQuest++;
     // chiama la funzione con l'indice aggiornato
@@ -175,8 +176,10 @@ const cambiaDomanda = () => {
     pagine.innerText = `QUESTION ${iQuest + 1}`;
     clearInterval(timerId); // Usa la variabile timerId per cancellare l'intervallo
     t.total = 11; //impostanto il total a 11 il grafico sarà visibile da 10, altrimenti sarebbe visibile solo da 9
-    t.secondi = 10; //reimposto i secondi altrimenti rimarrebbe t a 0
+    t.secondi = 11; //reimposto i secondi altrimenti rimarrebbe t a 0
     timeStart();
+  } else {
+    mostraPunteggioFinale();
   }
 };
 
@@ -192,7 +195,7 @@ function shuffleArray(array) {
 //visualizzo domande randomicamente
 
 const visualizzaDomanda = (iQuest) => {
-  const domandaCorrente = questions[iQuest]; // creo una variabile per semplificare la lettura contenente l'indice di questions
+  domandaCorrente = questions[iQuest]; // creo una variabile per semplificare la lettura contenente l'indice di questions
   domande.innerText = domandaCorrente.question;
   //cancello le risposte al rinnovo della domanda
   risposte.innerText = "";
@@ -220,3 +223,24 @@ const visualizzaDomanda = (iQuest) => {
 
 // avvio la funzione
 visualizzaDomanda(iQuest);
+
+function mostraPunteggioParziale() {
+  const totaleDomande = questions.length;
+  const percentualeCorretto = (punteggioCorretto / totaleDomande) * 100;
+  const percentualeErrato = (punteggioErrato / totaleDomande) * 100;
+
+  console.log(`Punteggio Corretto: ${punteggioCorretto}/${totaleDomande} (${percentualeCorretto}%)`);
+  console.log(`Punteggio Errato: ${punteggioErrato}/${totaleDomande} (${percentualeErrato}%)`);
+}
+
+function mostraPunteggioFinale() {
+  const totaleDomande = questions.length;
+  const percentualeCorretto = (punteggioCorretto / totaleDomande) * 100;
+  const percentualeErrato = (punteggioErrato / totaleDomande) * 100;
+
+  console.log(`Punteggio Corretto: ${punteggioCorretto}/${totaleDomande} (${percentualeCorretto}%)`);
+  console.log(`Punteggio Errato: ${punteggioErrato}/${totaleDomande} (${percentualeErrato}%)`);
+}
+
+// Chiamare questa funzione alla fine del quiz
+mostraPunteggioFinale();
