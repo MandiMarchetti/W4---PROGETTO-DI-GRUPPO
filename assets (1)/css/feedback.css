@@ -1,6 +1,7 @@
 /* global rules */
 * {
   font-family: "Inter", sans-serif;
+  box-sizing: border-box;
 }
 
 * input:focus {
@@ -45,19 +46,19 @@ body {
 }
 /* review stars rules */
 #stars {
-  height: 3rem;
+  height: auto;
   margin: 3rem;
 }
 
-.imggrayscale {
-  margin-inline: 0.3rem;
-  filter: grayscale(1);
+.active,
+.unactive:hover {
+  fill: #01ffff;
+  stroke: #01ffff;
 }
 
-.activestarsimg,
-.imggrayscale:hover {
-  filter: none;
-  margin-inline: 0.3rem;
+.unactive {
+  fill: #0b113b;
+  stroke: #01ffff;
 }
 
 /* comment section rules*/
@@ -89,6 +90,7 @@ body {
   width: 100%;
   height: 2rem;
   color: white;
+  text-align: center;
 }
 
 /* button rules*/

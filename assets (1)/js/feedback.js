@@ -1,33 +1,37 @@
 //creo una costante che richiami tutti gli elementi con stessa classe imggrayscale, condizione di partenza delle stelle
 
-const ratingStars = [...document.getElementsByClassName("imggrayscale")];
+const ratingStars = [...document.getElementsByClassName("unactiveStarsSvg")];
 
-// genero la funzione per illuminare la stella selezionata e tutte quelle presenti a sx
-function executeRating(stars) {
-  // genero due variabili per le stelle selezionate e quelle non selezionate che richiamano la classe CSS adeguata
-  const starClassActive = "activestarsimg";
-  const starClassUnactive = "imggrayscale";
-  //genero una variabile che corrisponda al valore della lunghezza della
-  const starsLength = stars.length;
-  let i;
-  // creo un nuovo array popolato da ogni elemento della funzione interna
-  stars.map((star) => {
-    //definisco il comportamento degli elementi al momento del click
-    star.onclick = () => {
-      i = stars.indexOf(star);
-      // genero un if/else statement per definire il comportamento della funzione a seconda della classe assegnata
-      if (star.className.indexOf(starClassUnactive) !== -1) {
-        //ciclo for per assegnare la classe corretta alla stella selezionata e alle stelle precedenti a sx
-        for (i; i >= 0; --i) stars[i].className = starClassActive;
+function changeClass(clickedSvg) {
+  // Se l'SVG cliccato è già attivo, imposta tutte le stelle come inattive
+  if (clickedSvg.classList.contains("active")) {
+    const svgs = document.querySelectorAll("svg");
+    svgs.forEach((svg) => {
+      svg.classList.add("unactive");
+      svg.classList.remove("active");
+    });
+  } else {
+    // Altrimenti, esegui la logica precedente
+    const svgs = document.querySelectorAll("svg");
+    svgs.forEach((svg) => {
+      if (svg === clickedSvg || svg.compareDocumentPosition(clickedSvg) & Node.DOCUMENT_POSITION_FOLLOWING) {
+        svg.classList.add("active");
+        svg.classList.remove("unactive");
       } else {
-        //ciclo for per assegnare la classe corretta alle stelle non selezionate ovvero quelle a dx
-        for (i; i < starsLength; ++i) stars[i].className = starClassUnactive;
+        svg.classList.add("unactive");
+        svg.classList.remove("active");
       }
-    };
-  });
+    });
+  }
 }
-//chiamo la funzione
-executeRating(ratingStars);
+
+// Aggiungi un evento di click a tutti gli SVG
+const svgs = document.querySelectorAll("svg");
+svgs.forEach((svg) => {
+  svg.addEventListener("click", function () {
+    changeClass(this); // Passa l'SVG cliccato alla funzione changeClass
+  });
+});
 
 //genero la funzione per inviare i dati indicati dall'utente nel form al click del bottone
 
