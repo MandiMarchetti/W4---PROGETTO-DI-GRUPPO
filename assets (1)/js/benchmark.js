@@ -180,6 +180,8 @@ const cambiaDomanda = () => {
     timeStart(); //riavvio il timer
     // t.total = 10; //impostanto il total a 11 il grafico sarà visibile da 10, altrimenti sarebbe visibile solo da 9
     // t.secondi = 10;
+  } else {
+    resultPage();
   }
 };
 
@@ -195,13 +197,79 @@ function shuffleArray(array) {
 let punteggioCorretto = 0;
 let punteggioErrato = questions.length - punteggioCorretto;
 // questa funzione serve a verificare se la risposta è giusta ed ad aggiungere un punteggio
+
+// definizione di resultPage
+const resultPage = () => {
+  const body = document.querySelector("body");
+  body.innerHTML = "";
+
+  const container = document.createElement("div"); // Scommenta questa linea
+  body.classList.add("container");
+  container.innerHTML = `
+    <header>
+      <img class="logo" src="./assets (1)/epicode_logo.png" alt="Epicode logo" />
+    </header>
+    <main>
+      <div class="title white">Results</div>
+      <div class="subTitle white">The summary of your answers:</div>
+      <div class="results" id="results">
+        <div class="verticalCenter">
+          
+          <div class="res-right"></div>
+        </div>
+        <canvas id="donutChart" class="res-donut" width="400" height="400"></canvas>
+        <div class="verticalCenter">
+          
+          <div class="res-wrong"></div>
+        </div>
+      </div>
+      <a href="feedback.html" class="btn-rate white">RATE US</a>
+    </main>
+  `;
+  //<div class="perc-correct textCenter">${correctPercentage}%</div><div class="perc-wrong textCenter">${wrongPercentage}%</div>
+  body.appendChild(container); // Scommenta questa linea
+  const correctResult = document.querySelector(".res-right");
+  const correctScore = punteggioCorretto;
+  correctResult.innerHTML = `<p>${correctScore} / ${questions.length} corrette</p>`;
+
+  const scorrectResult = document.querySelector(".res-wrong");
+  const scorrectScore = punteggioErrato;
+  scorrectResult.innerHTML = `<p>${scorrectScore} / ${questions.length} sbagliate</p>`;
+
+  const donutChartCanvas = document.getElementById("donutChart");
+  const donutChartContext = donutChartCanvas.getContext("2d");
+  const totalAnswers = correctScore + scorrectScore;
+  const correctPercentage = (correctScore / totalAnswers) * 100;
+  const wrongPercentage = (scorrectScore / totalAnswers) * 100;
+
+  // grafico risultati
+  const centerX = donutChartCanvas.width / 2;
+  const centerY = donutChartCanvas.height / 2;
+  const radius = Math.min(centerX, centerY) - 10;
+  const startAngle = -Math.PI / 2;
+  const endAngleCorrect = startAngle + (2 * Math.PI * correctPercentage) / 100;
+  const endAngleWrong = endAngleCorrect + (2 * Math.PI * wrongPercentage) / 100;
+
+  // parte corrette
+  donutChartContext.beginPath();
+  donutChartContext.arc(centerX, centerY, radius, startAngle, endAngleCorrect);
+  donutChartContext.strokeStyle = "#4CAF50";
+  donutChartContext.lineWidth = 20;
+  donutChartContext.stroke();
+
+  // parte sbagliate
+  donutChartContext.beginPath();
+  donutChartContext.arc(centerX, centerY, radius, endAngleCorrect, endAngleWrong);
+  donutChartContext.strokeStyle = "red";
+  donutChartContext.stroke();
+};
+//visualizzo domande randomicamente
+
 const verificaRisposta = (rispSalezionata, rispCorretta) => {
   if (rispSalezionata === rispCorretta) {
     punteggioCorretto++;
   }
 };
-
-//visualizzo domande randomicamente
 
 const visualizzaDomanda = (iQuest) => {
   domandaCorrente = questions[iQuest]; // creo una variabile per semplificare la lettura contenente l'indice di questions
