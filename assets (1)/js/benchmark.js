@@ -252,8 +252,10 @@ const resultPage = () => {
   const circleCenterY = donutChartCanvas.height / 2;
 
   const startAngle = -Math.PI / 2;
-  const endAngleCorrect = startAngle + (2 * Math.PI * correctPercentage) / 100;
-  const endAngleWrong = endAngleCorrect + (2 * Math.PI * wrongPercentage) / 100;
+  const endAngleCorrect = startAngle - (2 * Math.PI * correctPercentage) / 100;
+  const endAngleWrong = endAngleCorrect - (2 * Math.PI * wrongPercentage) / 100;
+  donutChartContext.shadowBlur = 10;
+  donutChartContext.shadowColor = "rgba(0, 0, 0, 0.5)";
   donutChartContext.fillStyle = "#FFFFFF";
 
   donutChartContext.font = "300 1rem Outfit";
@@ -293,14 +295,14 @@ const resultPage = () => {
   );
   // parte corrette
   donutChartContext.beginPath();
-  donutChartContext.arc(circleCenterX, circleCenterY, radius, startAngle, endAngleCorrect);
+  donutChartContext.arc(circleCenterX, circleCenterY, radius, startAngle, endAngleWrong, true);
   donutChartContext.strokeStyle = "#00FFFF";
   donutChartContext.lineWidth = 30;
   donutChartContext.stroke();
 
   // parte sbagliate
   donutChartContext.beginPath();
-  donutChartContext.arc(circleCenterX, circleCenterY, radius, endAngleCorrect, endAngleWrong);
+  donutChartContext.arc(circleCenterX, circleCenterY, radius, endAngleCorrect, startAngle, true);
   donutChartContext.strokeStyle = "#D20094";
   donutChartContext.stroke();
 };
