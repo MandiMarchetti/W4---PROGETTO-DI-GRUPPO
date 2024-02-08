@@ -94,12 +94,11 @@ const timeStart = () => {
   const t = { total: 11, secondi: 11 }; // Definisci due colori distinti
   const elapsedTimeColor = "#00FFFF"; // Colore per il tempo trascorso
   const remainingTimeColor = "#8d6495"; // Colore per il tempo mancante
-
   function updateTimer() {
     if (t.secondi > 0) {
       t.secondi--;
       updateGraph();
-      setTimeout(updateTimer, 1000);
+      timerId = setTimeout(updateTimer, 1000);
     } else {
       cambiaDomanda();
     }
@@ -177,7 +176,7 @@ const cambiaDomanda = () => {
     visualizzaDomanda(iQuest);
     // sovrascrivo il numero della pagina con l'indice aggiornato
     pagine.innerText = `QUESTION ${iQuest + 1}`;
-    //reimposto i secondi altrimenti rimarrebbe t a 0
+    clearTimeout(timerId); //reimposto i secondi altrimenti rimarrebbe t a 0
     timeStart(); //riavvio il timer
     // t.total = 10; //impostanto il total a 11 il grafico sarà visibile da 10, altrimenti sarebbe visibile solo da 9
     // t.secondi = 10;
@@ -193,11 +192,12 @@ function shuffleArray(array) {
   return array;
 }
 //creo una variabile per creare un punteggio
-let punteggio = 0;
+let punteggioCorretto = 0;
+let punteggioErrato = questions.length - punteggioCorretto;
 // questa funzione serve a verificare se la risposta è giusta ed ad aggiungere un punteggio
 const verificaRisposta = (rispSalezionata, rispCorretta) => {
   if (rispSalezionata === rispCorretta) {
-    punteggio++;
+    punteggioCorretto++;
   }
 };
 
@@ -238,7 +238,9 @@ visualizzaDomanda(iQuest);
 
 function mostraPunteggioParziale() {
   const totaleDomande = questions.length;
-  const percentualeCorretto = (punteggio / totaleDomande) * 100;
+  const percentualeCorretto = (punteggioCorretto / totaleDomande) * 100;
+  const punteggioErrato = totaleDomande - punteggioCorretto;
 
-  console.log(`Punteggio: ${punteggio}/${totaleDomande} (${percentualeCorretto}%)`);
+  console.log(`Punteggio Corretto: ${punteggioCorretto}/${totaleDomande} (${percentualeCorretto}%)`);
+  console.log(`Punteggio Errato: ${punteggioErrato}/${totaleDomande}`);
 }

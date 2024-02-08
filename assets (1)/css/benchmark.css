@@ -15,3 +15,8 @@ body {
 .doughnut {
   height: auto;
 }
+
+button {
+  text-align: center;
+  /* margin: 2em 5em; */
+}
