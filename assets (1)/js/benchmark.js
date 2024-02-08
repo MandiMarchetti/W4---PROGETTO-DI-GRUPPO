@@ -100,6 +100,7 @@ const timeStart = () => {
       updateGraph();
       timerId = setTimeout(updateTimer, 1000);
     } else {
+      punteggioErrato++;
       cambiaDomanda();
     }
   }
@@ -195,7 +196,7 @@ function shuffleArray(array) {
 }
 //creo una variabile per creare un punteggio
 let punteggioCorretto = 0;
-let punteggioErrato = questions.length - punteggioCorretto;
+let punteggioErrato = 0;
 // questa funzione serve a verificare se la risposta è giusta ed ad aggiungere un punteggio
 
 // definizione di resultPage
@@ -265,9 +266,11 @@ const resultPage = () => {
 };
 //visualizzo domande randomicamente
 
-const verificaRisposta = (rispSalezionata, rispCorretta) => {
-  if (rispSalezionata === rispCorretta) {
+const verificaRisposta = (rispSelezionata, rispCorretta) => {
+  if (rispSelezionata === rispCorretta) {
     punteggioCorretto++;
+  } else {
+    punteggioErrato++;
   }
 };
 
@@ -307,8 +310,8 @@ visualizzaDomanda(iQuest);
 function mostraPunteggioParziale() {
   const totaleDomande = questions.length;
   const percentualeCorretto = (punteggioCorretto / totaleDomande) * 100;
-  const punteggioErrato = totaleDomande - punteggioCorretto;
+  const percentualeErrato = (punteggioErrato / totaleDomande) * 100;
 
   console.log(`Punteggio Corretto: ${punteggioCorretto}/${totaleDomande} (${percentualeCorretto}%)`);
-  console.log(`Punteggio Errato: ${punteggioErrato}/${totaleDomande}`);
+  console.log(`Punteggio Errato: ${punteggioErrato}/${totaleDomande} (${percentualeErrato}%)`);
 }
