@@ -88,48 +88,67 @@ let domandaCorrente; //viene definita in visualizzaDomanda()
 const tempo = document.getElementById("tempo");
 let timerId;
 
-const t = { total: 11, secondi: 11 }; // setto tutto a 11 per ovviare al ritardo di caricamento del grafico e timer
+// setto tutto a 11 per ovviare al ritardo di caricamento del grafico e timer
 
 const timeStart = () => {
-  timerId = setInterval(function () {
-    // Modifica la condizione per decrementare solo quando t.secondi è maggiore di 0
-    if (t.secondi > 1) {
-      t.secondi--;
-    } else {
-      clearInterval(timerId);
-      cambiaDomanda();
-      return; // Esci dalla funzione in modo che il codice successivo non venga eseguito
-    }
+  const t = { total: 11, secondi: 11 }; // Definisci due colori distinti
+  const elapsedTimeColor = "#00FFFF"; // Colore per il tempo trascorso
+  const remainingTimeColor = "#8d6495"; // Colore per il tempo mancante
 
+  function updateTimer() {
+    if (t.secondi > 0) {
+      t.secondi--;
+      updateGraph();
+      setTimeout(updateTimer, 1000);
+    } else {
+      cambiaDomanda();
+    }
+  }
+
+  function updateGraph() {
     let progress = 1 - t.secondi / t.total;
 
     context.clearRect(0, 0, doughnut.width, doughnut.height);
 
-    const radius = Math.min(doughnut.width / 2, doughnut.height / 2) - 40;
+    const radius = Math.min(doughnut.width / 2, doughnut.height / 2) - 32;
     const centerX = doughnut.width / 2;
     const centerY = doughnut.height / 2;
 
     const startAngle = -Math.PI / 2;
-    const endAngle = -Math.PI / 2 + 2 * Math.PI * progress;
+    const endAngleElapsed = -Math.PI / 2 + 2 * Math.PI * progress;
+    const endAngleRemaining = -Math.PI / 2;
+
+    // Disegna la parte del grafico per il tempo trascorso
     context.beginPath();
-
-    // Imposta progress a 0 quando t.secondi è uguale a t.total
-    if (t.secondi === t.total) {
-      progress = 0;
-    }
-
-    context.arc(centerX, centerY, radius, startAngle, endAngle, true);
+    context.arc(centerX, centerY, radius, startAngle, endAngleElapsed, true);
     context.lineWidth = 10;
-    context.strokeStyle = "#4CAF50";
+    context.strokeStyle = elapsedTimeColor;
     context.fillStyle = "transparent";
     context.fill();
     context.stroke();
 
-    context.font = "20px Arial";
+    // Disegna la parte del grafico per il tempo mancante
+    context.beginPath();
+    context.arc(centerX, centerY, radius, endAngleElapsed, endAngleRemaining, true);
+    context.lineWidth = 10;
+    context.strokeStyle = remainingTimeColor;
+    context.fillStyle = "transparent";
+    context.fill();
+    context.stroke();
+    context.font = "200 0.5rem Outfit";
     context.fillStyle = "#FFFFFF";
+    const originalFont = context.font;
+    context.letterSpacing = "0.5px";
+    context.fillText("SECONDS", centerX - context.measureText("SECONDS").width / 2, centerY - radius + 22);
 
-    context.fillText(t.secondi, centerX - 10, centerY + 10);
-  }, 1000);
+    context.font = "300 2.5rem Outfit";
+    context.fillText(t.secondi, centerX - context.measureText(t.secondi).width / 2, centerY + 12);
+
+    context.font = originalFont;
+    context.fillText("REMAINING", centerX - context.measureText("REMAINING").width / 2, centerY + radius - 18);
+  }
+
+  updateTimer();
 };
 
 window.onload = function () {
@@ -158,10 +177,10 @@ const cambiaDomanda = () => {
     visualizzaDomanda(iQuest);
     // sovrascrivo il numero della pagina con l'indice aggiornato
     pagine.innerText = `QUESTION ${iQuest + 1}`;
-    clearInterval(timerId); // Usa la variabile timerId per cancellare l'intervallo
-    t.total = 11; //impostanto il total a 11 il grafico sarà visibile da 10, altrimenti sarebbe visibile solo da 9
-    t.secondi = 11; //reimposto i secondi altrimenti rimarrebbe t a 0
+    //reimposto i secondi altrimenti rimarrebbe t a 0
     timeStart(); //riavvio il timer
+    // t.total = 10; //impostanto il total a 11 il grafico sarà visibile da 10, altrimenti sarebbe visibile solo da 9
+    // t.secondi = 10;
   }
 };
 
