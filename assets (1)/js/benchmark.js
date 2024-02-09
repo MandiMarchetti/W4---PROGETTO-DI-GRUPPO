@@ -212,21 +212,23 @@ const resultPage = () => {
     <header class="headerFeedPage">
       <img class="headerImgFeedPage" src="./assets (1)/epicode_logo.png" alt="Epicode logo" />
     </header>
-    <main>
+    <main class="mainResults">
       <div class="h1ResultPage">Results</div>
       <div class="h2ResultPage">The summary of your answers:</div>
       <div class="results" id="results">
       
         <div class="verticalCenter">
-          <div class="perc-correct">${punteggioCorretto * 10}%</div>
-          <div class="res-right"></div>
+          <span class="marginZero">Correct</span>
+          <p class="perc-correct marginZero">${punteggioCorretto * 10}%</p>
+          <div class="res-right marginZero"></div>
         </div>
         
         <canvas id="donutChart" class="res-donut" width="250" height="250"></canvas>
         
         <div class="verticalCenter">
-          <div class="perc-wrong">${punteggioErrato * 10}%</div>
-          <div class="res-wrong"></div>
+          <span class="marginZero">Wrong</span>
+          <p class="perc-wrong marginZero">${punteggioErrato * 10}%</p>
+          <div class="res-wrong marginZero"></div>
         </div>
       </div>
       <a href="feedback.html" class="btn-rate white">RATE US</a>
@@ -234,10 +236,10 @@ const resultPage = () => {
   `;
   body.appendChild(container);
   const correctResult = document.querySelector(".res-right");
-  correctResult.innerHTML = `<p>${punteggioCorretto} / 10 corrette</p>`;
+  correctResult.innerHTML = `<p>${punteggioCorretto}/10 questions</p>`;
 
   const scorrectResult = document.querySelector(".res-wrong");
-  scorrectResult.innerHTML = `<p>${punteggioErrato} / 10 sbagliate</p>`;
+  scorrectResult.innerHTML = `<p>${punteggioErrato}/10 questions</p>`;
 
   const donutChartCanvas = document.getElementById("donutChart");
   const donutChartContext = donutChartCanvas.getContext("2d");
@@ -248,7 +250,7 @@ const resultPage = () => {
   // grafico risultati
   const centerX = donutChartCanvas.width / 2;
   const centerY = donutChartCanvas.height / 2;
-  const radius = Math.min(centerX, centerY) + 25;
+  const radius = Math.min(centerX, centerY) + 45;
   const canvasSize = radius * 3;
 
   donutChartCanvas.width = canvasSize;
@@ -265,69 +267,69 @@ const resultPage = () => {
   donutChartContext.shadowColor = "rgba(0, 0, 0, 0.5)";
   if (correctPercentage > 50) {
     donutChartContext.fillStyle = "#FFFFFF";
-    donutChartContext.font = "300 1.6rem Outfit";
+    donutChartContext.font = "300 1.6rem Inter";
     donutChartContext.fillText(
       "Congratulations!",
       circleCenterX - donutChartContext.measureText("Congratulations!").width / 2,
-      circleCenterY - radius + 105
+      circleCenterY - radius + 115
     );
     donutChartContext.fillStyle = "#00FFFF";
     donutChartContext.fillText(
       "You passed the exam.",
       circleCenterX - donutChartContext.measureText("You passed the exam.").width / 2,
-      circleCenterY - radius + 130
+      circleCenterY - radius + 150
     );
     donutChartContext.letterSpacing = "0.6px";
     donutChartContext.fillStyle = "#FFFFFF";
-    donutChartContext.font = "200 1rem Outfit";
+    donutChartContext.font = "200 1rem Inter";
     donutChartContext.fillText(
       "We'll send you the certificate",
       circleCenterX - donutChartContext.measureText("We'll send you the certificate").width / 2,
-      circleCenterY - radius + 175
+      circleCenterY - radius + 188
     );
     donutChartContext.fillText(
       "in a few minutes.",
       circleCenterX - donutChartContext.measureText("in a few minutes.").width / 2,
-      circleCenterY - radius + 190
+      circleCenterY - radius + 205
     );
     donutChartContext.fillText(
       "Check your email (including",
       circleCenterX - donutChartContext.measureText("Check your email (including").width / 2,
-      circleCenterY - radius + 205
+      circleCenterY - radius + 222
     );
     donutChartContext.fillText(
       "promotion/spam folder)",
       circleCenterX - donutChartContext.measureText("promotion/spam folder)").width / 2,
-      circleCenterY - radius + 220
+      circleCenterY - radius + 241
     );
   } else {
     donutChartContext.fillStyle = "#FFFFFF";
-    donutChartContext.font = "300 1.6rem Outfit";
+    donutChartContext.font = "300 1.6rem Inter";
     donutChartContext.fillText(
       "OH NO!",
       circleCenterX - donutChartContext.measureText("OH NO!").width / 2,
-      circleCenterY - radius + 105
+      circleCenterY - radius + 120
     );
     donutChartContext.fillStyle = "#D20094";
-    donutChartContext.font = "300 1.8rem Outfit";
+    donutChartContext.font = "300 1.8rem Inter";
     donutChartContext.fillText(
       "You failed the exam.",
       circleCenterX - donutChartContext.measureText("You failed the exam.").width / 2,
-      circleCenterY - radius + 160
+      circleCenterY - radius + 170
     );
     donutChartContext.fillStyle = "#FFFFFF";
-    donutChartContext.font = "200 1rem Outfit";
+    donutChartContext.font = "200 1rem Inter";
     donutChartContext.fillText(
       "Try again!",
       circleCenterX - donutChartContext.measureText("Try again!").width / 2,
-      circleCenterY - radius + 215
+      circleCenterY - radius + 230
     );
   }
   // parte corrette
   donutChartContext.beginPath();
   donutChartContext.arc(circleCenterX, circleCenterY, radius, startAngle, endAngleWrong, true);
   donutChartContext.strokeStyle = "#00FFFF";
-  donutChartContext.lineWidth = 30;
+  donutChartContext.lineWidth = 50;
   donutChartContext.stroke();
 
   // parte sbagliate
