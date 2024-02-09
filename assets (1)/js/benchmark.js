@@ -113,7 +113,7 @@ const timeStart = () => {
 
     context.clearRect(0, 0, doughnut.width, doughnut.height);
 
-    const radius = Math.min(doughnut.width / 2, doughnut.height / 2) - 32;
+    const radius = Math.min(doughnut.width / 2, doughnut.height / 2) - 10;
     const centerX = doughnut.width / 2;
     const centerY = doughnut.height / 2;
 
@@ -124,7 +124,7 @@ const timeStart = () => {
     // Disegno la parte del grafico per il tempo trascorso
     context.beginPath();
     context.arc(centerX, centerY, radius, startAngle, endAngleElapsed, true);
-    context.lineWidth = 10;
+    context.lineWidth = 13;
     context.strokeStyle = elapsedTimeColor;
     context.fillStyle = "transparent";
     context.fill();
@@ -139,17 +139,17 @@ const timeStart = () => {
     context.fill();
     context.stroke();
     //Scrivo all'interno del grafico
-    context.font = "200 0.5rem Outfit"; //regolo il font
+    context.font = "200 0.8rem Outfit"; //regolo il font
     context.fillStyle = "#FFFFFF"; // do un colore al font
     const originalFont = context.font; //lo chiudo in una variabile da riutilizzare dopo
     context.letterSpacing = "0.5px"; //distanzio leggermente le lettere per renderle più leggibili
-    context.fillText("SECONDS", centerX - context.measureText("SECONDS").width / 2, centerY - radius + 22);
+    context.fillText("SECONDS", centerX - context.measureText("SECONDS").width / 2, centerY - radius + 32);
 
-    context.font = "300 2.5rem Outfit"; //cambio il font per i secondi
-    context.fillText(t.secondi, centerX - context.measureText(t.secondi).width / 2, centerY + 12);
+    context.font = "300 4rem Outfit"; //cambio il font per i secondi
+    context.fillText(t.secondi, centerX - context.measureText(t.secondi).width / 2, centerY + 20);
 
     context.font = originalFont; // cambio il font per farlo tornare come prima
-    context.fillText("REMAINING", centerX - context.measureText("REMAINING").width / 2, centerY + radius - 18);
+    context.fillText("REMAINING", centerX - context.measureText("REMAINING").width / 2, centerY + radius - 28);
   }
 
   updateTimer();
