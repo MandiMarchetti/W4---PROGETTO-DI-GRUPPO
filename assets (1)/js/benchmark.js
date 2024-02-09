@@ -118,7 +118,7 @@ const timeStart = () => {
     const endAngleElapsed = -Math.PI / 2 + 2 * Math.PI * progress;
     const endAngleRemaining = -Math.PI / 2;
 
-    // Disegna la parte del grafico per il tempo trascorso
+    // Disegno la parte del grafico per il tempo trascorso
     context.beginPath();
     context.arc(centerX, centerY, radius, startAngle, endAngleElapsed, true);
     context.lineWidth = 10;
@@ -127,24 +127,25 @@ const timeStart = () => {
     context.fill();
     context.stroke();
 
-    // Disegna la parte del grafico per il tempo mancante
+    // Disegno la parte del grafico per il tempo mancante
     context.beginPath();
-    context.arc(centerX, centerY, radius, endAngleElapsed, endAngleRemaining, true);
-    context.lineWidth = 10;
+    context.arc(centerX, centerY, radius, endAngleElapsed, endAngleRemaining, true); //andamento del grafico
+    context.lineWidth = 10; //spessore del grafico
     context.strokeStyle = remainingTimeColor;
-    context.fillStyle = "transparent";
+    context.fillStyle = "transparent"; // il centro del grafico è invisibile
     context.fill();
     context.stroke();
-    context.font = "200 0.5rem Outfit";
-    context.fillStyle = "#FFFFFF";
-    const originalFont = context.font;
-    context.letterSpacing = "0.5px";
+    //Scrivo all'interno del grafico
+    context.font = "200 0.5rem Outfit"; //regolo il font
+    context.fillStyle = "#FFFFFF"; // do un colore al font
+    const originalFont = context.font; //lo chiudo in una variabile da riutilizzare dopo
+    context.letterSpacing = "0.5px"; //distanzio leggermente le lettere per renderle più leggibili
     context.fillText("SECONDS", centerX - context.measureText("SECONDS").width / 2, centerY - radius + 22);
 
-    context.font = "300 2.5rem Outfit";
+    context.font = "300 2.5rem Outfit"; //cambio il font per i secondi
     context.fillText(t.secondi, centerX - context.measureText(t.secondi).width / 2, centerY + 12);
 
-    context.font = originalFont;
+    context.font = originalFont; // cambio il font per farlo tornare come prima
     context.fillText("REMAINING", centerX - context.measureText("REMAINING").width / 2, centerY + radius - 18);
   }
 
@@ -372,6 +373,7 @@ const visualizzaDomanda = (iQuest) => {
 // avvio la funzione
 visualizzaDomanda(iQuest);
 
+//Funzione che controlla passo passo in concole il punteggio
 function mostraPunteggioParziale() {
   const totaleDomande = questions.length;
   const percentualeCorretto = (punteggioCorretto / totaleDomande) * 100;
