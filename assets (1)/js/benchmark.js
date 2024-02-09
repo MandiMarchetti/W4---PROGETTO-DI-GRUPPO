@@ -104,7 +104,6 @@ const timeStart = () => {
       timerId = setTimeout(updateTimer, 1000);
     } else {
       punteggioErrato++;
-      punteggioErrato++;
       cambiaDomanda();
     }
   }
