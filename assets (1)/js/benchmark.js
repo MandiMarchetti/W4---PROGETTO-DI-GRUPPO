@@ -89,6 +89,9 @@ const tempo = document.getElementById("tempo");
 let timerId;
 
 // setto tutto a 11 per ovviare al ritardo di caricamento del grafico e timer
+const tempoScaduto = () => {
+  punteggioErrato++;
+};
 
 const timeStart = () => {
   const t = { total: 11, secondi: 11 }; // Definisci due colori distinti
@@ -100,6 +103,7 @@ const timeStart = () => {
       updateGraph();
       timerId = setTimeout(updateTimer, 1000);
     } else {
+      punteggioErrato++;
       punteggioErrato++;
       cambiaDomanda();
     }
@@ -207,20 +211,23 @@ const resultPage = () => {
   const container = document.createElement("div"); // Scommenta questa linea
   body.classList.add("container");
   container.innerHTML = `
-    <header>
-      <img class="logo" src="./assets (1)/epicode_logo.png" alt="Epicode logo" />
+    <header class="headerFeedPage">
+      <img class="headerImgFeedPage" src="./assets (1)/epicode_logo.png" alt="Epicode logo" />
     </header>
     <main>
-      <div class="title white">Results</div>
-      <div class="subTitle white">The summary of your answers:</div>
+      <div class="h1ResultPage">Results</div>
+      <div class="h2ResultPage">The summary of your answers:</div>
       <div class="results" id="results">
+      
         <div class="verticalCenter">
-          <div class="perc-correct textCenter">${punteggioCorretto * 10}%</div>
+          <div class="perc-correct">${punteggioCorretto * 10}%</div>
           <div class="res-right"></div>
         </div>
-        <canvas id="donutChart" class="res-donut" width="150" height="150"></canvas>
+        
+        <canvas id="donutChart" class="res-donut" width="250" height="250"></canvas>
+        
         <div class="verticalCenter">
-          <div class="perc-wrong textCenter">${punteggioErrato * 10}%</div>
+          <div class="perc-wrong">${punteggioErrato * 10}%</div>
           <div class="res-wrong"></div>
         </div>
       </div>

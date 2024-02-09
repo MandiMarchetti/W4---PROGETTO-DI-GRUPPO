@@ -15,16 +15,21 @@
     />
   </head>
   <body>
-    <header>
-      <img class="logo" src="./assets (1)/epicode_logo.png" alt="Epicode logo" />
+    <header class="headerFeedPage">
+      <img class="headerImgFeedPage" src="./assets (1)/epicode_logo.png" alt="Epicode logo" />
     </header>
-    <main>
+
+    <nav>
       <canvas id="tempo" class="doughnut"></canvas>
-      <h1 id="domande"></h1>
-      <div id="risposte"></div>
+    </nav>
+    <main>
+      <div class="questionsBox">
+        <h1 id="domande" class="h1FeedPage"></h1>
+        <div id="risposte"></div>
+      </div>
     </main>
     <footer>
-      <p><span id="pages"></span>/10</p>
+      <p><span id="pages"></span><strong>/10</strong></p>
     </footer>
     <script src="./assets (1)/js/benchmark.js"></script>
   </body>
