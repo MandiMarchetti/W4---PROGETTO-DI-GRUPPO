@@ -13,6 +13,7 @@ body {
   background-image: url("../bg.jpg");
   background-size: cover;
   color: white;
+  margin: 0;
 }
 /* header rules*/
 .headerFeedPage {
@@ -24,13 +25,14 @@ body {
   width: 170px;
   height: auto;
   margin-left: 70px;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 /* main section rules*/
 
 .mainFeedPage {
-  margin: 0 20%;
+  margin: 0 30em;
+  margin-top: 7em;
 }
 
 /* text rules*/

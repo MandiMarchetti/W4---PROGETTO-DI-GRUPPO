@@ -4,109 +4,107 @@ body{
     background-image: URL("../bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    margin: 0;
 }
 
 /* Per aggiustare tutto il contenuto nella stessa magine */
-main{
-    margin-left: 70px;
+main {
+  margin-left: 70px;
 }
 
 /* header rules*/
 .headerFeedPage {
-    height: 6rem;
-    text-align: left;
-  }
-  
-  .headerImgFeedPage {
-    width: 170px;
-    height: auto;
-    margin-left: 70px;
-    margin-top: 30px;
-  }
+  height: 6rem;
+  text-align: left;
+}
 
+.headerImgFeedPage {
+  width: 170px;
+  height: auto;
+  margin-left: 70px;
+  margin-top: 40px;
+}
 
 /*Welcome to your exam*/
 
-.content{
-    text-align: left;
+.content {
+  text-align: left;
 }
 
-.content h1{
-    margin: 0;
-    padding-top: 1em;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 300;
-    font-size: 4.2rem;
-    color:white;
-    line-height: 50px;
-        
+.content h1 {
+  margin: 0;
+  padding-top: 1em;
+  font-family: "Outfit", sans-serif;
+  font-weight: 300;
+  font-size: 4.2rem;
+  color: white;
+  line-height: 50px;
 }
 /*Title - INSTRUCTION*/
-.content h3{
-    margin: 0;
-    padding-top: 2em;
-    font-family: 'Outfit';
-    font-size: 1.5rem;
-    color: #c2128d;
+.content h3 {
+  margin: 0;
+  padding-top: 2em;
+  font-family: "Outfit";
+  font-size: 1.5rem;
+  color: #c2128d;
 }
 /* Main paragraph - WE DON'T EXPECT...*/
-.content p{
-    margin: 0;
-    padding-top: 10px;
-    color:white;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    line-height: 18px;
+.content p {
+  margin: 0;
+  padding-top: 10px;
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  line-height: 18px;
 }
 /*LIST*/
-.content ul{
-    margin: 0;
-    padding-top: 2em;
-    color:white;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    line-height: 23px;
-
+.content ul {
+  margin: 0;
+  padding-top: 2em;
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  line-height: 23px;
 }
 
 /* CHECKBOX - content */
-.checkbox{
-    margin: 0;
-    padding-top: 4em;
+.checkbox {
+  margin: 0;
+  padding-top: 4em;
 }
-.checkbox p{
-    display: inline-block;
-    color:white;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
+.checkbox p {
+  display: inline-block;
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
 }
-
 
 /* BUTTON*/
- button{
-    width: 180px;
-    height: 50px;
-    background-color: #00ffff;
-    border: none;
-    border-radius: 2px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1.2rem;
-    font-weight:700;
-    margin-left: 14em;
-    color: #0b1840;
+button {
+  width: 180px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 2px solid #a6a6a6;
+  border-radius: 2px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: 14em;
+  color: #a6a6a6;
 }
 
 /*it'll be activated when the checkbox was checked*/
-button a{
-    text-decoration: none;
-    color: #0b1840;
+button a {
+  text-decoration: none;
+  color: #0b1840;
 }
 
-.button-shining{
-    box-shadow:2px 2px 15px  #00ffff; 
-
+.button-shining {
+  box-shadow: 2px 2px 15px #00ffff;
+  background-color: #00ffff;
+  border: none;
 }
 
-footer{
-    margin-left: 70px;
+footer {
+  margin-left: 70px;
 }

@@ -13,10 +13,12 @@ body {
   background-image: url("../bg.jpg");
   background-size: cover;
   color: white;
+  min-height: 100vh;
+  margin: 0;
 }
 
 .headerFeedPage {
-  height: 6em;
+  height: 6rem;
   text-align: left;
 }
 
@@ -24,7 +26,7 @@ body {
   width: 170px;
   height: auto;
   margin-left: 70px;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 nav {
@@ -71,6 +73,7 @@ main {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
+  height: 30vh;
 }
 
 #risposte button {
@@ -79,9 +82,11 @@ main {
   color: #fff;
   background: rgba(0, 0, 0, 0.2);
   padding: 2em 1.5em;
-  border: linear-gradient(180deg, #ffffff 80%, #595959 100%);
-  box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+  border-image: linear-gradient(180deg, #ffffff 80%, #595959 100%);
+  /*border-image-slice: 1;
+  border-image-width: 2px;*/
   border-radius: 50px;
+  border: outset;
   transition: 1000ms;
   transform: translateY(0);
   display: flex;
@@ -99,7 +104,6 @@ main {
   transform: translateY(-0px);
   background: #b9008c;
   color: white;
-  border: linear-gradient(180deg, #ffffff 80%, #595959 100%);
 }
 
 p {
@@ -194,11 +198,11 @@ button {
 
 footer {
   text-align: center;
-  padding: 25px 10px 45px 45px;
-  font-size: 15px;
+  font-size: 1.5rem;
   letter-spacing: 2px;
   font-weight: bold;
   font-family: "Inter", sans-serif;
+  margin-top: 5em;
 }
 footer p strong {
   color: #9b1e8d;
