@@ -1,0 +1,98 @@
+/*//WELCOME PAGE //*/
+
+body{
+    background-image: URL("../bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Per aggiustare tutto il contenuto nella stessa magine */
+.main{
+    margin-top: 30px;
+    margin-left: 70px;
+    margin-right: 70px;
+}
+
+/* Image of the 'logo' */
+body div img{
+    width: 170px;
+    height: auto;
+}
+
+
+/*Welcome to your exam*/
+.content h1{
+    margin: 0;
+    padding-top: 80px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 100;
+    font-size: 60px;
+    color:white;
+    line-height: 50px;
+    
+}
+/*Title - INSTRUCTION*/
+.content h3{
+    margin: 0;
+    padding-top: 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 25px;
+    color: #c2128d;
+}
+/* Main paragraph - WE DON'T EXPECT...*/
+.content p{
+    margin: 0;
+    padding-top: 10px;
+    color:white;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+}
+/*LIST*/
+.content ul{
+    margin: 0;
+    padding-top: 40px;
+    color:white;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 23px;
+
+}
+
+/* CHECKBOX - content */
+.checkbox{
+    margin: 0;
+    padding-top: 60px;
+}
+.checkbox p{
+    display: inline-block;
+    color:white;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+}
+
+
+/* BUTTON*/
+ button{
+    width: 180px;
+    height: 50px;
+    background-color: #00ffff;
+    border: none;
+    border-radius: 2px;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight:700;
+    margin-left: 7em;
+    color: #0b1840;
+}
+
+/*it'll be activated when the checkbox was checked*/
+button a{
+    text-decoration: none;
+    color: #0b1840;
+}
+
+.button-shining{
+    box-shadow:2px 2px 15px  #00ffff; 
+
+}
