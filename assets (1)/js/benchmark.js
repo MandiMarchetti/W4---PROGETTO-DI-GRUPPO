@@ -209,31 +209,31 @@ const resultPage = () => {
   const container = document.createElement("div");
   body.classList.add("container");
   container.innerHTML = `
-    <header class="headerFeedPage">
-      <img class="headerImgFeedPage" src="./assets (1)/epicode_logo.png" alt="Epicode logo" />
-    </header>
-    <main class="mainResults">
-      <div class="h1ResultPage">Results</div>
-      <div class="h2ResultPage">The summary of your answers:</div>
-      <div class="results" id="results">
-      
-        <div class="verticalCenter">
-          <span class="marginZero">Correct</span>
-          <p class="perc-correct marginZero">${punteggioCorretto * 10}%</p>
-          <div class="res-right marginZero"></div>
-        </div>
-        
-        <canvas id="donutChart" class="res-donut" width="250" height="250"></canvas>
-        
-        <div class="verticalCenter">
-          <span class="marginZero">Wrong</span>
-          <p class="perc-wrong marginZero">${punteggioErrato * 10}%</p>
-          <div class="res-wrong marginZero"></div>
-        </div>
-      </div>
-      <a href="feedback.html" class="btn-rate white">RATE US</a>
-    </main>
-  `;
+  <header class="headerFeedPage">
+  <img class="headerImgFeedPage" src="./assets (1)/epicode_logo.png" alt="Epicode logo" />
+</header>
+<main class="mainResults">
+  <div class="h1ResultPage">Results</div>
+  <div class="h2ResultPage">The summary of your answers:</div>
+  <div class="results" id="results">
+
+    <div class="verticalCenter">
+      <span class="marginZero">Correct</span>
+      <p class="perc-correct marginZero">${punteggioCorretto * 10}%</p>
+      <div class="res-right marginZero"></div>
+    </div>
+
+    <canvas id="donutChart" class="res-donut" width="250" height="250"></canvas>
+
+    <div class="verticalCenter">
+      <span class="marginZero">Wrong</span>
+      <p class="perc-wrong marginZero">${punteggioErrato * 10}%</p>
+      <div class="res-wrong marginZero"></div>
+    </div>
+  </div>
+  <a href="feedback.html" class="btn-rate white">RATE US</a>
+</main>
+`;
   body.appendChild(container);
   const correctResult = document.querySelector(".res-right");
   correctResult.innerHTML = `<p>${punteggioCorretto}/10 questions</p>`;
