@@ -7,36 +7,46 @@ body{
 }
 
 /* Per aggiustare tutto il contenuto nella stessa magine */
-.main{
-    margin-top: 30px;
+main{
     margin-left: 70px;
-    margin-right: 70px;
 }
 
-/* Image of the 'logo' */
-body div img{
+/* header rules*/
+.headerFeedPage {
+    height: 6rem;
+    text-align: left;
+  }
+  
+  .headerImgFeedPage {
     width: 170px;
     height: auto;
-}
+    margin-left: 70px;
+    margin-top: 30px;
+  }
 
 
 /*Welcome to your exam*/
+
+.content{
+    text-align: left;
+}
+
 .content h1{
     margin: 0;
-    padding-top: 80px;
+    padding-top: 1em;
     font-family: 'Outfit', sans-serif;
-    font-weight: 100;
-    font-size: 60px;
+    font-weight: 300;
+    font-size: 4.2rem;
     color:white;
     line-height: 50px;
-    
+        
 }
 /*Title - INSTRUCTION*/
 .content h3{
     margin: 0;
-    padding-top: 40px;
-    font-family: 'Inter', sans-serif;
-    font-size: 25px;
+    padding-top: 2em;
+    font-family: 'Outfit';
+    font-size: 1.5rem;
     color: #c2128d;
 }
 /* Main paragraph - WE DON'T EXPECT...*/
@@ -45,16 +55,16 @@ body div img{
     padding-top: 10px;
     color:white;
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 18px;
 }
 /*LIST*/
 .content ul{
     margin: 0;
-    padding-top: 40px;
+    padding-top: 2em;
     color:white;
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 23px;
 
 }
@@ -62,13 +72,13 @@ body div img{
 /* CHECKBOX - content */
 .checkbox{
     margin: 0;
-    padding-top: 60px;
+    padding-top: 4em;
 }
 .checkbox p{
     display: inline-block;
     color:white;
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
+    font-size: 0.8rem;
 }
 
 
@@ -80,9 +90,9 @@ body div img{
     border: none;
     border-radius: 2px;
     font-family: 'Inter', sans-serif;
-    font-size: 20px;
+    font-size: 1.2rem;
     font-weight:700;
-    margin-left: 7em;
+    margin-left: 14em;
     color: #0b1840;
 }
 
@@ -95,4 +105,8 @@ button a{
 .button-shining{
     box-shadow:2px 2px 15px  #00ffff; 
 
+}
+
+footer{
+    margin-left: 70px;
 }
