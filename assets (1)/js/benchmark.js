@@ -194,17 +194,16 @@ function shuffleArray(array) {
   }
   return array;
 }
-//creo una variabile per creare un punteggio
+//creo le variabili per il punteggio
 let punteggioCorretto = 0;
 let punteggioErrato = 0;
-// questa funzione serve a verificare se la risposta è giusta ed ad aggiungere un punteggio
 
 // definizione di resultPage
 const resultPage = () => {
   const body = document.querySelector("body");
   body.innerHTML = "";
 
-  const container = document.createElement("div"); // Scommenta questa linea
+  const container = document.createElement("div");
   body.classList.add("container");
   container.innerHTML = `
     <header>
@@ -227,7 +226,7 @@ const resultPage = () => {
       <a href="feedback.html" class="btn-rate white">RATE US</a>
     </main>
   `;
-  body.appendChild(container); // Scommenta questa linea
+  body.appendChild(container);
   const correctResult = document.querySelector(".res-right");
   correctResult.innerHTML = `<p>${punteggioCorretto} / 10 corrette</p>`;
 
