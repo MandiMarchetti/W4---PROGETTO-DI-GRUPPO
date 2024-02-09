@@ -147,8 +147,7 @@ button a {
 }
 
 .h1FeedPage {
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 4rem;
   height: 7rem;
 }
 
@@ -161,6 +160,11 @@ button a {
 .h1ResultPage {
   font-size: 4rem;
   font-weight: 700;
+}
+
+.h2FeedPage {
+  font-size: 2rem;
+  font-weight: 300;
 }
 
 .h2ResultPage {
@@ -370,8 +374,12 @@ button a {
   font-weight: 700;
   color: #0b1840;
   border: none;
+  width: 13em;
+  height: 4em;
 }
 
 .buttonFeedPage:hover {
   box-shadow: 2px 2px 15px #01ffff;
+  width: 13em;
+  height: 4em;
 }
