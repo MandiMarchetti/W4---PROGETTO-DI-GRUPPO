@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets (1)/css/welcome.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets (1)/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,39 +13,38 @@
       rel="stylesheet"
     />
     <title>Traccia BW I</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <header class="headerFeedPage">
-        <img class="headerImgFeedPage" src="./assets (1)/epicode_logo.png" alt="Epicode school logo" />
+      <img class="headerImgFeedPage" src="./assets (1)/epicode_logo.png" alt="Epicode school logo" />
     </header>
 
-    <main> <!--I made the class Main to ajust all the content in the center-->
-       
-       
-        <div class="content">
-            <h1>Welcome to <br><strong>your exam</strong></h1>
-            <h3>Instructions</h3>
-            <p>We don't expect most engineers to know the answers to all of these <br>
-                questions, so don't worry if you're unsure of a few of them.
-            </p>
-            <ul>
-                <li>Each question is <strong>timed</strong> and can only be <strong>answered once.</strong></li>
-                <li>Changing browser tab or opening other windows will <strong>invalidated the question.</strong></li>
-                <li>This exam will take approx. <strong>0-5 minutes.</strong></li>
-            </ul>
-        </div>
+    <main class="mainWelcome">
+      <!--I made the class Main to ajust all the content in the center-->
 
+      <div class="content">
+        <h1>Welcome to <br /><strong>your exam</strong></h1>
+        <h3>Instructions</h3>
+        <p>
+          We don't expect most engineers to know the answers to all of these <br />
+          questions, so don't worry if you're unsure of a few of them.
+        </p>
+        <ul>
+          <li>Each question is <strong>timed</strong> and can only be <strong>answered once.</strong></li>
+          <li>Changing browser tab or opening other windows will <strong>invalidated the question.</strong></li>
+          <li>This exam will take approx. <strong>0-5 minutes.</strong></li>
+        </ul>
+      </div>
     </main>
-    
-    <footer>
-        <div class="checkbox">
-            <input type="checkbox" id="check" onclick="checkFunction ()">
-            <p><strong>I promise to answer myself without help from anyone</strong></p>
-            <button  id="btn-change">PROCEED</button>
-        </div>
+
+    <footer class=".footerWelcome">
+      <div class="checkbox">
+        <input type="checkbox" id="check" onclick="checkFunction ()" />
+        <p><strong>I promise to answer myself without help from anyone</strong></p>
+        <button id="btn-change">PROCEED</button>
+      </div>
     </footer>
 
     <script src="./assets (1)/js/welcome.js"></script>
-</body>
+  </body>
 </html>
