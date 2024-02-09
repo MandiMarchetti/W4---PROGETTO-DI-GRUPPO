@@ -266,61 +266,62 @@ const resultPage = () => {
   donutChartContext.shadowColor = "rgba(0, 0, 0, 0.5)";
   if (correctPercentage > 50) {
     donutChartContext.fillStyle = "#FFFFFF";
-    donutChartContext.font = "300 1rem Outfit";
+    donutChartContext.font = "300 1.6rem Outfit";
     donutChartContext.fillText(
       "Congratulations!",
       circleCenterX - donutChartContext.measureText("Congratulations!").width / 2,
-      circleCenterY - radius + 70
+      circleCenterY - radius + 105
     );
     donutChartContext.fillStyle = "#00FFFF";
     donutChartContext.fillText(
       "You passed the exam.",
       circleCenterX - donutChartContext.measureText("You passed the exam.").width / 2,
-      circleCenterY - radius + 87
+      circleCenterY - radius + 130
     );
     donutChartContext.letterSpacing = "0.6px";
     donutChartContext.fillStyle = "#FFFFFF";
-    donutChartContext.font = "200 0.6rem Outfit";
+    donutChartContext.font = "200 1rem Outfit";
     donutChartContext.fillText(
       "We'll send you the certificate",
       circleCenterX - donutChartContext.measureText("We'll send you the certificate").width / 2,
-      circleCenterY - radius + 115
+      circleCenterY - radius + 175
     );
     donutChartContext.fillText(
       "in a few minutes.",
       circleCenterX - donutChartContext.measureText("in a few minutes.").width / 2,
-      circleCenterY - radius + 127
+      circleCenterY - radius + 190
     );
     donutChartContext.fillText(
       "Check your email (including",
       circleCenterX - donutChartContext.measureText("Check your email (including").width / 2,
-      circleCenterY - radius + 139
+      circleCenterY - radius + 205
     );
     donutChartContext.fillText(
       "promotion/spam folder)",
       circleCenterX - donutChartContext.measureText("promotion/spam folder)").width / 2,
-      circleCenterY - radius + 151
+      circleCenterY - radius + 220
     );
   } else {
     donutChartContext.fillStyle = "#FFFFFF";
-    donutChartContext.font = "300 1.2rem Outfit";
+    donutChartContext.font = "300 1.6rem Outfit";
     donutChartContext.fillText(
       "OH NO!",
       circleCenterX - donutChartContext.measureText("OH NO!").width / 2,
-      circleCenterY - radius + 80
+      circleCenterY - radius + 105
     );
     donutChartContext.fillStyle = "#D20094";
+    donutChartContext.font = "300 1.8rem Outfit";
     donutChartContext.fillText(
-      "You failed th exam.",
-      circleCenterX - donutChartContext.measureText("You failed th exam.").width / 2,
-      circleCenterY - radius + 105
+      "You failed the exam.",
+      circleCenterX - donutChartContext.measureText("You failed the exam.").width / 2,
+      circleCenterY - radius + 160
     );
     donutChartContext.fillStyle = "#FFFFFF";
     donutChartContext.font = "200 1rem Outfit";
     donutChartContext.fillText(
       "Try again!",
       circleCenterX - donutChartContext.measureText("Try again!").width / 2,
-      circleCenterY - radius + 135
+      circleCenterY - radius + 215
     );
   }
   // parte corrette
